@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:haiternak_mobile/app/routes/app_pages.dart';
 
 class OnboardingController extends GetxController {
   final currentIndex = 0.obs;
@@ -20,7 +21,8 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      //! WIP navigation to login page
+      // ! Change login later
+      Get.offAllNamed(Routes.HOME);
     }
   }
 

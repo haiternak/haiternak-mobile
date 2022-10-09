@@ -20,6 +20,7 @@ class OnboardingView extends GetView<OnboardingController> {
         child: Column(
           children: [
             // * part of one Page view dynamic
+
             Expanded(
               flex: 10,
               child: PageView(

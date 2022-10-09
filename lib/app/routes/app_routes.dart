@@ -7,10 +7,14 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SPLASH = _Paths.SPLASH;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
+  static const UPLOAD = _Paths.UPLOAD;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const SPLASH = '/splash';
   static const ONBOARDING = '/onboarding';
+  static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
+  static const UPLOAD = '/upload';
 }

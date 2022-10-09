@@ -11,6 +11,8 @@ dependencies:
   google_fonts: 3.0.1
   dots_indicator: 2.1.0
   delayed_display: 2.0.0
+  flutter_svg: 1.1.5
+  carousel_slider: 4.1.1
   flutter: 
     sdk: flutter
 
@@ -23,5 +25,6 @@ dev_dependencies:
 flutter: 
   assets: 
     - assets/images/
+    - assets/icons/
   uses-material-design: true
 
