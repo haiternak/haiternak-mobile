@@ -16,6 +16,6 @@ ThemeData theme() {
 
 IconThemeData iconThemeData() {
   return IconThemeData(
-    color: kPrimaryTextColor,
+    color: kBackgroundColor1,
   );
 }

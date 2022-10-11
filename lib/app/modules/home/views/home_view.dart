@@ -5,6 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
+import 'package:haiternak_mobile/app/modules/home/views/disease_track_view.dart';
+import 'package:haiternak_mobile/app/modules/home/views/highlight_view.dart';
+import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 
@@ -59,49 +62,52 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(18),
-                child: Container(
-                  height: getProperHeight(140),
-                  width: double.infinity,
-                  padding: EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/image.png'),
-                      fit: BoxFit.cover,
+              GestureDetector(
+                onTap: (() => Get.to(HighlightView())),
+                child: Padding(
+                  padding: EdgeInsets.all(18),
+                  child: Container(
+                    height: getProperHeight(140),
+                    width: double.infinity,
+                    padding: EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(28),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/image.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: Text(
-                          'Memahami pentingnya vaksinasi Pada Ternak',
-                          style: whiteTextStyle.copyWith(
-                            fontWeight: semiBold,
-                            fontSize: 16,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: kBackgroundColor1,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.arrow_circle_right_outlined,
-                            color: kPrimaryColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Text(
+                            'Memahami pentingnya vaksinasi Pada Ternak',
+                            style: whiteTextStyle.copyWith(
+                              fontWeight: semiBold,
+                              fontSize: 16,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                      ),
-                    ],
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: kBackgroundColor1,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.arrow_circle_right_outlined,
+                              color: kPrimaryColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -237,98 +243,101 @@ class InfoCase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        color: kPrimaryColor,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: getProperWidht(8)),
-            margin: EdgeInsets.symmetric(horizontal: getProperWidht(18)),
-            child: Text(
-              'Terakhir Diperbarui 18.25, 25 Sep, 2022',
-              style: whiteTextStyle,
+    return GestureDetector(
+      onTap: () => Get.to(DiseaseTrackView()),
+      child: Container(
+        margin: EdgeInsets.all(defaultPadding),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          color: kPrimaryColor,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: getProperWidht(8)),
+              margin: EdgeInsets.symmetric(horizontal: getProperWidht(18)),
+              child: Text(
+                'Terakhir Diperbarui 18.25, 25 Sep, 2022',
+                style: whiteTextStyle,
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: getProperWidht(18),
-              vertical: getProperWidht(12),
-            ),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: kPrimaryLightColor,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Sulawesi Selatan',
-                        style: primaryTextStyle,
-                      ),
-                      Text(
-                        'Persebaran Penyakit',
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 18,
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: getProperWidht(18),
+                vertical: getProperWidht(12),
+              ),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: kPrimaryLightColor,
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Sulawesi Selatan',
+                          style: primaryTextStyle,
                         ),
-                      ),
-                      Text(
-                        'Kasus persebaran penyakit ternak unggas',
-                        style: subtitleTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor,
-                      shape: BoxShape.circle,
+                        Text(
+                          'Persebaran Penyakit',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 18,
+                          ),
+                        ),
+                        Text(
+                          'Kasus persebaran penyakit ternak unggas',
+                          style: subtitleTextStyle,
+                        ),
+                      ],
                     ),
+                  ),
+                  Expanded(
+                    flex: 2,
                     child: Container(
-                      // width: getProperWidht(57),
-                      // height: getProperWidht(57),
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: kBackgroundColor1,
+                        color: kSecondaryColor,
                         shape: BoxShape.circle,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '234',
-                            style: primaryTextStyle.copyWith(
-                              fontWeight: bold,
-                              fontSize: 18,
+                      child: Container(
+                        // width: getProperWidht(57),
+                        // height: getProperWidht(57),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: kBackgroundColor1,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '234',
+                              style: primaryTextStyle.copyWith(
+                                fontWeight: bold,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'Kasus',
-                            style: subtitleTextStyle.copyWith(
-                              fontSize: 14,
+                            Text(
+                              'Kasus',
+                              style: subtitleTextStyle.copyWith(
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -410,23 +419,26 @@ class CustomAppBar extends StatelessWidget {
         ),
         Positioned(
           bottom: 0,
-          child: Container(
-            width: getProperWidht(266),
-            height: getProperWidht(45),
-            padding: EdgeInsets.symmetric(horizontal: getProperWidht(24)),
-            decoration: BoxDecoration(
-              color: kPrimaryLightColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Periksa ternakmu segera!',
-                  style: primaryTextStyle,
-                ),
-                Image.asset('assets/icons/camera_face.png')
-              ],
+          child: GestureDetector(
+            onTap: () => Get.toNamed(Routes.UPLOAD),
+            child: Container(
+              width: getProperWidht(266),
+              height: getProperWidht(45),
+              padding: EdgeInsets.symmetric(horizontal: getProperWidht(24)),
+              decoration: BoxDecoration(
+                color: kPrimaryLightColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Periksa ternakmu segera!',
+                    style: primaryTextStyle,
+                  ),
+                  Image.asset('assets/icons/camera_face.png')
+                ],
+              ),
             ),
           ),
         ),

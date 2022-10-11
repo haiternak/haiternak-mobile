@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
+import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 
@@ -150,7 +152,9 @@ class UploadView extends GetView<UploadController> {
                 width: double.infinity,
                 height: getProperHeight(getProperWidht(56)),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(ResultView());
+                  },
                   child: Text(
                     'Upload Gambar',
                     style: whiteTextStyle.copyWith(

@@ -49,7 +49,7 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/report-icon.svg',
-                color: _controller.currentIndex.value == 2
+                color: _controller.currentIndex.value == 3
                     ? kPrimaryColor
                     : Color(0xFF808191),
               ),
@@ -58,7 +58,7 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/user-icon.svg',
-                color: _controller.currentIndex.value == 3
+                color: _controller.currentIndex.value == 4
                     ? kPrimaryColor
                     : Color(0xFF808191),
               ),
