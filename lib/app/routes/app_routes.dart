@@ -9,6 +9,7 @@ abstract class Routes {
   static const ONBOARDING = _Paths.ONBOARDING;
   static const BOTTOM_NAV_BAR = _Paths.BOTTOM_NAV_BAR;
   static const UPLOAD = _Paths.UPLOAD;
+  static const MARKET = _Paths.MARKET;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const ONBOARDING = '/onboarding';
   static const BOTTOM_NAV_BAR = '/bottom-nav-bar';
   static const UPLOAD = '/upload';
+  static const MARKET = '/market';
 }
