@@ -1,23 +1,55 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:haiternak_mobile/constants/constants.dart';
 
 class ChatController extends GetxController {
-  //TODO: Implement ChatController
+  final currentIndex = 1.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void changeIndex(int id) {
+    currentIndex.value = id;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  List<Map<String, dynamic>> listDay = [
+    {
+      'id': 1,
+      'title': 'Senin',
+    },
+    {
+      'id': 2,
+      'title': 'Selasa',
+    },
+    {
+      'id': 3,
+      'title': 'Rabu',
+    },
+    {
+      'id': 4,
+      'title': 'Kamis',
+    },
+    {
+      'id': 5,
+      'title': 'Jumat',
+    },
+    {
+      'id': 6,
+      'title': 'Sabtu',
+    },
+    {
+      'id': 7,
+      'title': 'Minggu',
+    },
+  ];
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  BoxDecoration unselectDecoration = BoxDecoration(
+    color: kBackgroundColor1,
+    border: Border.all(
+      color: kPrimaryColor,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
 
-  void increment() => count.value++;
+  BoxDecoration selectDecoration = BoxDecoration(
+    color: kPrimaryColor,
+    borderRadius: BorderRadius.circular(20),
+  );
 }

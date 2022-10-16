@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:haiternak_mobile/app/modules/chat/views/doctor_list_view.dart';
 import 'package:haiternak_mobile/app/modules/upload/controllers/upload_controller.dart';
 import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
@@ -101,7 +102,7 @@ class DetailView extends GetView<UploadController> {
                       height: getProperHeight(getProperWidht(56)),
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.to(ResultView());
+                          Get.to(DoctorListView());
                         },
                         child: Text(
                           'Konsultasi dengan Expert',

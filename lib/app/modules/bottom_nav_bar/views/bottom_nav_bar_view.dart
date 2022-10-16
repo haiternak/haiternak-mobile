@@ -11,61 +11,56 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
   @override
   Widget build(BuildContext context) {
     BottomNavBarController _controller = Get.put(BottomNavBarController());
-    return Padding(
-      padding: EdgeInsets.only(
-        top: getProperWidht(10),
-      ),
-      child: Obx(
-        () => BottomNavigationBar(
-          backgroundColor: kBackgroundColor1,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _controller.currentIndex.value,
-          onTap: (value) => _controller.goToPage(value),
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/home-icon.svg',
-                color: _controller.currentIndex.value == 0
-                    ? kPrimaryColor
-                    : Color(0xFF808191),
-              ),
-              label: 'Home',
+    return Obx(
+      () => BottomNavigationBar(
+        backgroundColor: kBackgroundColor1,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _controller.currentIndex.value,
+        onTap: (value) => _controller.goToPage(value),
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/home-icon.svg',
+              color: _controller.currentIndex.value == 0
+                  ? kPrimaryColor
+                  : Color(0xFF808191),
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/cart-icon.svg',
-                color: _controller.currentIndex.value == 1
-                    ? kPrimaryColor
-                    : Color(0xFF808191),
-              ),
-              label: 'Market',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/cart-icon.svg',
+              color: _controller.currentIndex.value == 1
+                  ? kPrimaryColor
+                  : Color(0xFF808191),
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/picture-icon.svg',
-              ),
-              label: '',
+            label: 'Market',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/picture-icon.svg',
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/report-icon.svg',
-                color: _controller.currentIndex.value == 3
-                    ? kPrimaryColor
-                    : Color(0xFF808191),
-              ),
-              label: 'Konsul',
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/report-icon.svg',
+              color: _controller.currentIndex.value == 3
+                  ? kPrimaryColor
+                  : Color(0xFF808191),
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/user-icon.svg',
-                color: _controller.currentIndex.value == 4
-                    ? kPrimaryColor
-                    : Color(0xFF808191),
-              ),
-              label: 'Akun',
+            label: 'Konsul',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/user-icon.svg',
+              color: _controller.currentIndex.value == 4
+                  ? kPrimaryColor
+                  : Color(0xFF808191),
             ),
-          ],
-        ),
+            label: 'Akun',
+          ),
+        ],
       ),
     );
   }

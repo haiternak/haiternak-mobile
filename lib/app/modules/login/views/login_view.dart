@@ -31,11 +31,12 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(
                     height: getProperWidht(25),
                   ),
+                  // ! Ubah semua text style dengan yang sudah di buat seperti contoh di bawah
                   Text(
                     "Masukkan email dan password untuk melanjutkan",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(221, 104, 104, 104)),
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 18,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -91,6 +92,7 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(
                     height: getProperWidht(10),
                   ),
+                  // ! ingat kasih fungsi visible na
                   TextFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(

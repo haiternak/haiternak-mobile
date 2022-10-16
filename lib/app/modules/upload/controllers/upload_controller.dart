@@ -49,6 +49,7 @@ class UploadController extends GetxController {
           );
 
       result.value = recognitions!;
+      print(result);
       changeLabelToTitle();
     } catch (e) {
       throw Exception(e);
