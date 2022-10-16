@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
 import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../controllers/upload_controller.dart';
 
@@ -41,7 +44,8 @@ class UploadView extends GetView<UploadController> {
                       children: [
                         Expanded(
                           child: Image.asset(
-                            'assets/images/image.png',
+                            'assets/images/panduan-image.png',
+                            width: getProperWidht(400),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -93,66 +97,25 @@ class UploadView extends GetView<UploadController> {
                 style:
                     primaryTextStyle.copyWith(fontWeight: bold, fontSize: 24),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: getProperWidht(10)),
-                padding: EdgeInsets.all(getProperWidht(14)),
-                width: getProperWidht(264),
-                height: getProperWidht(140),
-                decoration: BoxDecoration(
-                  color: Color(0xFFE4E9F1),
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(getProperWidht(10)),
-                          decoration: BoxDecoration(
-                            color: kBackgroundColor1,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: softShadow,
-                          ),
-                          child: Image.asset('assets/icons/camera-icon.png'),
-                        ),
-                        Text(
-                          'Kamera',
-                          style: primaryTextStyle,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(getProperWidht(10)),
-                          decoration: BoxDecoration(
-                            color: kBackgroundColor1,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: softShadow,
-                          ),
-                          child: Image.asset(
-                            'assets/icons/gallery-icon.png',
-                            width: getProperWidht(43),
-                          ),
-                        ),
-                        Text(
-                          'Gallery',
-                          style: primaryTextStyle,
-                        ),
-                      ],
-                    ),
-                  ],
+              Obx(
+                () => Container(
+                  margin: EdgeInsets.symmetric(vertical: getProperWidht(10)),
+                  padding: EdgeInsets.all(getProperWidht(14)),
+                  width: getProperWidht(264),
+                  height: getProperWidht(140),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFE4E9F1),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: controller.isPick.value ? OutputImage() : InputImage(),
                 ),
               ),
               Container(
                 width: double.infinity,
                 height: getProperHeight(getProperWidht(56)),
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await controller.imageClassification();
                     Get.to(ResultView());
                   },
                   child: Text(
@@ -174,6 +137,109 @@ class UploadView extends GetView<UploadController> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class OutputImage extends StatelessWidget {
+  const OutputImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    UploadController controller = Get.put(UploadController());
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        image: DecorationImage(
+          image: FileImage(controller.image.value),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: IconButton(
+          onPressed: () => controller.removeImage(),
+          icon: Icon(
+            Icons.cancel_outlined,
+            color: kAlert,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InputImage extends StatelessWidget {
+  const InputImage({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(UploadController());
+    final ImagePicker picker = ImagePicker();
+
+    XFile? image;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () async {
+            image = await picker.pickImage(source: ImageSource.camera);
+            File fileImage = File(image!.path);
+            controller.getImage(fileImage);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                padding: EdgeInsets.all(getProperWidht(10)),
+                decoration: BoxDecoration(
+                  color: kBackgroundColor1,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: softShadow,
+                ),
+                child: Image.asset('assets/icons/camera-icon.png'),
+              ),
+              Text(
+                'Kamera',
+                style: primaryTextStyle,
+              ),
+            ],
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            image = await picker.pickImage(source: ImageSource.gallery);
+            File fileImage = File(image!.path);
+            controller.getImage(fileImage);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                padding: EdgeInsets.all(getProperWidht(10)),
+                decoration: BoxDecoration(
+                  color: kBackgroundColor1,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: softShadow,
+                ),
+                child: Image.asset(
+                  'assets/icons/gallery-icon.png',
+                  width: getProperWidht(43),
+                ),
+              ),
+              Text(
+                'Gallery',
+                style: primaryTextStyle,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -13,6 +13,8 @@ dependencies:
   delayed_display: 2.0.0
   flutter_svg: 1.1.5
   carousel_slider: 4.1.1
+  flutter_tflite: 1.0.1
+  image_picker: 0.8.6
   flutter: 
     sdk: flutter
 
@@ -26,5 +28,7 @@ flutter:
   assets: 
     - assets/images/
     - assets/icons/
+    - assets/tflite/model_inception_1.tflite
+    - assets/tflite/labels.txt
   uses-material-design: true
 

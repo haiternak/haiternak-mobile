@@ -92,6 +92,7 @@ class ResultContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UploadController controller = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -120,99 +121,99 @@ class ResultContent extends StatelessWidget {
               color: kSecondaryColor,
             ),
           ),
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: getProperHeight(getProperWidht(56)),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(DetailView());
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Opacity(
-                        opacity: 0,
-                        child: Icon(Icons.arrow_forward),
-                      ),
-                      Text(
-                        'Salmonela',
-                        style: whiteTextStyle.copyWith(
-                          fontSize: 18,
-                        ),
-                      ),
-                      Icon(Icons.keyboard_arrow_right_outlined),
-                    ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: getProperWidht(14),
-              ),
-              Row(
+          child: Obx(() => Column(
                 children: [
                   Container(
-                    width: getProperWidht(56),
-                    height: getProperWidht(56),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/image.png'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  SizedBox(
-                    width: getProperWidht(10),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: Column(
+                    width: double.infinity,
+                    height: getProperHeight(getProperWidht(56)),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(DetailView());
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Disease 1, Lorem ipsum lorem ipsum Disease 1, Lorem',
-                            style: primaryTextStyle.copyWith(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                          Opacity(
+                            opacity: 0,
+                            child: Icon(Icons.arrow_forward),
                           ),
+                          Text(
+                            controller.title.value,
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 18,
+                            ),
+                          ),
+                          Icon(Icons.keyboard_arrow_right_outlined),
                         ],
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    height: getProperWidht(7),
-                    width: getProperWidht(7),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kAlert,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: kPrimaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: getProperWidht(4),
+                    height: getProperWidht(14),
                   ),
-                  Text(
-                    'Most Likely',
-                    style: primaryTextStyle.copyWith(
-                      color: kAlert,
-                      fontSize: 10,
-                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: getProperWidht(56),
+                        height: getProperWidht(56),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: FileImage(controller.image.value),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      SizedBox(
+                        width: getProperWidht(10),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Text(
+                                'Disease 1, Lorem ipsum lorem ipsum Disease 1, Lorem',
+                                style: primaryTextStyle.copyWith(fontSize: 14),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: getProperWidht(7),
+                        width: getProperWidht(7),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: kAlert,
+                        ),
+                      ),
+                      SizedBox(
+                        width: getProperWidht(4),
+                      ),
+                      Text(
+                        'Most Likely',
+                        style: primaryTextStyle.copyWith(
+                          color: kAlert,
+                          fontSize: 10,
+                        ),
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          ),
+              )),
         ),
       ],
     );

@@ -42,7 +42,7 @@ class DetailView extends GetView<UploadController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StackCartd(),
+              AppBarCard(),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(defaultPadding),
@@ -151,7 +151,7 @@ class RecomendationCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               image: DecorationImage(
-                image: AssetImage('assets/images/image.png'),
+                image: AssetImage('assets/images/perawatan-image.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -189,13 +189,15 @@ class RecomendationCard extends StatelessWidget {
   }
 }
 
-class StackCartd extends StatelessWidget {
-  const StackCartd({
+class AppBarCard extends StatelessWidget {
+  const AppBarCard({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    UploadController controller = Get.find();
+
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -207,57 +209,57 @@ class StackCartd extends StatelessWidget {
           height: getProperWidht(70),
           width: double.infinity,
         ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            padding: EdgeInsets.all(getProperWidht(14)),
-            width: getProperWidht(319),
-            decoration: BoxDecoration(
-              color: kBackgroundColor1,
-              borderRadius: BorderRadius.circular(28),
-              boxShadow: softShadow,
-            ),
-            child: Row(
-              children: [
-                Container(
-                  height: getProperWidht(77),
-                  width: getProperWidht(77),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/image.png'),
-                      fit: BoxFit.cover,
+        Obx(() => Positioned(
+              bottom: 0,
+              child: Container(
+                padding: EdgeInsets.all(getProperWidht(14)),
+                width: getProperWidht(319),
+                decoration: BoxDecoration(
+                  color: kBackgroundColor1,
+                  borderRadius: BorderRadius.circular(28),
+                  boxShadow: softShadow,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: getProperWidht(77),
+                      width: getProperWidht(77),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        image: DecorationImage(
+                          image: FileImage(controller.image.value),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  width: getProperWidht(14),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Salmonella',
-                        style: primaryTextStyle.copyWith(
-                          fontWeight: semiBold,
-                          fontSize: 19,
-                        ),
+                    SizedBox(
+                      width: getProperWidht(14),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.title.value,
+                            style: primaryTextStyle.copyWith(
+                              fontWeight: semiBold,
+                              fontSize: 19,
+                            ),
+                          ),
+                          Text(
+                            'Salah satu penyakit Unggas',
+                            style: subtitleTextStyle.copyWith(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Salah satu penyakit Unggas',
-                        style: subtitleTextStyle.copyWith(
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+                    )
+                  ],
+                ),
+              ),
+            )),
       ],
     );
   }
