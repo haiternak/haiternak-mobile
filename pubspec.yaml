@@ -13,10 +13,16 @@ dependencies:
   delayed_display: 2.0.0
   flutter_svg: 1.1.5
   carousel_slider: 4.1.1
+<<<<<<< HEAD
   flutter_tflite: 1.0.1
   image_picker: 0.8.6
+=======
+  get_cli: ^1.8.1
+>>>>>>> 9b1f37d93acd35786ffdb23fd8f3eb82ceca6548
   flutter: 
     sdk: flutter
+  icony: ^1.0.5
+  icon: ^2.2.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

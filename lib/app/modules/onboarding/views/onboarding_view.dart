@@ -1,14 +1,12 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/onboarding/views/components/left_button.dart';
 import 'package:haiternak_mobile/app/modules/onboarding/views/components/page_onboarding.dart';
 import 'package:haiternak_mobile/app/modules/onboarding/views/components/right_button.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
-
 import '../controllers/onboarding_controller.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
