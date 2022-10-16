@@ -13,13 +13,10 @@ import 'package:haiternak_mobile/app/modules/splash/bindings/splash_binding.dart
 import 'package:haiternak_mobile/app/modules/splash/views/splash_view.dart';
 import 'package:haiternak_mobile/app/modules/upload/bindings/upload_binding.dart';
 import 'package:haiternak_mobile/app/modules/upload/views/upload_view.dart';
-<<<<<<< HEAD
 
 import '../modules/market_place/bindings/market_binding.dart';
 import '../modules/market_place/views/market_view.dart';
 
-=======
->>>>>>> 9b1f37d93acd35786ffdb23fd8f3eb82ceca6548
 part 'app_routes.dart';
 
 class AppPages {
