@@ -10,10 +10,18 @@ class BottomNavBarController extends GetxController {
     if (index != 2) {
       currentIndex.value = index;
     }
-
     switch (index) {
+      case 0:
+        Get.toNamed(Routes.HOME);
+        break;
+      // case 1:
+      //   Get.toNamed(Routes.MARKET);
+      //   break;
       case 2:
         Get.toNamed(Routes.UPLOAD);
+        break;
+      case 3:
+        Get.toNamed(Routes.CHAT);
         break;
       default:
     }

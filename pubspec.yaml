@@ -13,8 +13,11 @@ dependencies:
   delayed_display: 2.0.0
   flutter_svg: 1.1.5
   carousel_slider: 4.1.1
+  get_cli: ^1.8.1
   flutter: 
     sdk: flutter
+  icony: ^1.0.5
+  icon: ^2.2.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
