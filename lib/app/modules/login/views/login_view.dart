@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:haiternak_mobile/app/modules/register/views/register_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
@@ -156,7 +155,7 @@ class LoginView extends GetView<LoginController> {
                           },
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).accentColor),
+                            color: Theme.of(context).colorScheme.secondary),
                       ),
                     ])),
                   ),

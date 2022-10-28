@@ -31,10 +31,6 @@ class RegisterController extends GetxController {
     usernameController = TextEditingController();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

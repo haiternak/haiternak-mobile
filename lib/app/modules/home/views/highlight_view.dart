@@ -1,20 +1,16 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 
 import '../controllers/home_controller.dart';
-import 'components/card_caraousel.dart';
 
 class HighlightView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    HomeController _controller = Get.put(HomeController());
+    HomeController controller = Get.put(HomeController());
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(getProperWidht(180)), // Set this height

@@ -15,7 +15,7 @@ import '../controllers/MarketController.dart';
 class MarketView extends GetView<MarketController> {
   @override
   Widget build(BuildContext context) {
-    MarketController _controller = Get.put(MarketController());
+    MarketController controller = Get.put(MarketController());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -251,17 +251,17 @@ class CarouselScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MarketController _controller = Get.find();
+    MarketController controller = Get.find();
     return Column(
       children: [
         CarouselSlider(
-          carouselController: _controller.buttonCarouselController,
+          carouselController: controller.buttonCarouselController,
           options: CarouselOptions(
             height: getProperWidht(160),
-            onPageChanged: (index, reason) => _controller.changePage(index),
+            onPageChanged: (index, reason) => controller.changePage(index),
             autoPlay: true,
           ),
-          items: _controller.korosal.map((i) {
+          items: controller.korosal.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return CardCaraouselMarket(
@@ -277,7 +277,7 @@ class CarouselScroll extends StatelessWidget {
         Obx(
           () => DotsIndicator(
             dotsCount: 3,
-            position: _controller.currentIndex.value.toDouble(),
+            position: controller.currentIndex.value.toDouble(),
             decorator: DotsDecorator(
               activeColor: kPrimaryColor,
               size: const Size.square(9.0),

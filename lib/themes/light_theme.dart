@@ -2,6 +2,7 @@ part of 'themes.dart';
 
 ThemeData theme() {
   return ThemeData(
+    dividerColor: Colors.transparent,
     scaffoldBackgroundColor: kBackgroundColor1,
     appBarTheme: AppBarTheme(
       iconTheme: iconThemeData(),

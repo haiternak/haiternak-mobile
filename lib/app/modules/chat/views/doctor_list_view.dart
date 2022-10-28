@@ -1,11 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import 'package:haiternak_mobile/app/modules/chat/views/detail_chat_view.dart';
-import 'package:haiternak_mobile/app/modules/home/views/home_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 import '../controllers/chat_controller.dart';

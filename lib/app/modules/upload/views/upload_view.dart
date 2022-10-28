@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
-import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 import 'package:image_picker/image_picker.dart';

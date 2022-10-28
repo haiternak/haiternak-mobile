@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/login/views/login_view.dart';
 import 'package:haiternak_mobile/app/modules/register/controllers/register_controller.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
-import '../../../../constants/constants.dart';
 
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({Key? key}) : super(key: key);
@@ -237,7 +236,7 @@ class RegisterView extends GetView<RegisterController> {
                           },
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).accentColor),
+                            color: Theme.of(context).colorScheme.secondary),
                       ),
                     ])),
                   ),

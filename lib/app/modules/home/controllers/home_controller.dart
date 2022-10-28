@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/constants/constants.dart';
 
 class HomeController extends GetxController {
   final currentIndex = 0.obs;

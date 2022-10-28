@@ -10,7 +10,7 @@ void main() {
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      title: "Application",
+      title: "Haiternak",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

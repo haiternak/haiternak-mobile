@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:haiternak_mobile/app/data/disease_model.dart';
+import 'package:haiternak_mobile/app/data/treatment_model.dart';
 import 'package:haiternak_mobile/app/modules/chat/views/doctor_list_view.dart';
 import 'package:haiternak_mobile/app/modules/upload/controllers/upload_controller.dart';
-import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 
 class DetailView extends GetView<UploadController> {
-  const DetailView({super.key});
-
+  const DetailView({required this.diseaseModel, super.key});
+  final DiseaseModel diseaseModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,7 @@ class DetailView extends GetView<UploadController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppBarCard(),
+              AppBarCard(title: diseaseModel.title),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(defaultPadding),
@@ -61,7 +62,7 @@ class DetailView extends GetView<UploadController> {
                       height: getProperWidht(10),
                     ),
                     Text(
-                      'Bercak putih (White Spot) ini muncul karena adanya proses penghilangan kadar garam dan mineral (demineralisasi) pada jaringan keras gigi akibat plak dan sisa makanan yang menumpuk. Jika dibiarkan terus menerus, bercak putih akan berubah menjadi bercak kecoklatan yang menyebar dan membentuk lubang pada gigi.',
+                      diseaseModel.desc,
                       style: subtitleTextStyle.copyWith(
                         fontSize: 14,
                       ),
@@ -79,8 +80,11 @@ class DetailView extends GetView<UploadController> {
                     SizedBox(
                       height: getProperWidht(18),
                     ),
-                    RecomendationCard(),
-                    RecomendationCard(),
+                    Column(
+                      children: diseaseModel.treatmentModel
+                          .map((e) => RecomendationCard(treatmentModel: e))
+                          .toList(),
+                    ),
                   ],
                 ),
               ),
@@ -132,10 +136,14 @@ class DetailView extends GetView<UploadController> {
 class RecomendationCard extends StatelessWidget {
   const RecomendationCard({
     Key? key,
+    required this.treatmentModel,
   }) : super(key: key);
+
+  final TreatmentModel treatmentModel;
 
   @override
   Widget build(BuildContext context) {
+    UploadController controller = Get.find();
     return Container(
       padding: EdgeInsets.all(getProperWidht(14)),
       margin: EdgeInsets.only(bottom: getProperWidht(14)),
@@ -144,57 +152,99 @@ class RecomendationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         color: kBackgroundColor1,
       ),
-      child: Row(
-        children: [
-          Container(
-            height: getProperWidht(77),
-            width: getProperWidht(77),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              image: DecorationImage(
-                image: AssetImage('assets/images/perawatan-image.png'),
-                fit: BoxFit.cover,
-              ),
+      child: ExpansionTile(
+        title: Text(
+          treatmentModel.title,
+          style: primaryTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 16,
+          ),
+        ),
+        iconColor: kPrimaryColor,
+        leading: Container(
+          height: getProperWidht(55),
+          width: getProperWidht(55),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(
+              image: AssetImage('assets/images/perawatan-image.png'),
+              fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
-            width: getProperWidht(14),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Perawatan 1',
-                style: primaryTextStyle.copyWith(
-                  fontWeight: semiBold,
-                  fontSize: 19,
-                ),
-              ),
-              Text(
-                'Meningkatkan Imun',
-                style: subtitleTextStyle.copyWith(
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.keyboard_arrow_down),
+        ),
+        children: [
+          Text(
+            treatmentModel.desc,
+            style: subtitleTextStyle.copyWith(
+              fontSize: 14,
+            ),
           ),
         ],
       ),
     );
+    // Row(
+    //     children: [
+    //       Container(
+    //         height: getProperWidht(55),
+    //         width: getProperWidht(55),
+    //         decoration: BoxDecoration(
+    //           borderRadius: BorderRadius.circular(20),
+    //           image: DecorationImage(
+    //             image: AssetImage('assets/images/perawatan-image.png'),
+    //             fit: BoxFit.cover,
+    //           ),
+    //         ),
+    //       ),
+    //       SizedBox(
+    //         width: getProperWidht(14),
+    //       ),
+    //       Expanded(
+    //         flex: 10,
+    //         child: Column(
+    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             Text(
+    //               treatmentModel.title,
+    //               style: primaryTextStyle.copyWith(
+    //                 fontWeight: semiBold,
+    //                 fontSize: 16,
+    //               ),
+    //             ),
+    //             controller.isExpan.value
+    //                 ? Text(
+    //                     treatmentModel.desc,
+    //                     style: subtitleTextStyle.copyWith(
+    //                       fontSize: 14,
+    //                     ),
+    //                   )
+    //                 : Text(
+    //                     treatmentModel.desc,
+    //                     style: subtitleTextStyle.copyWith(
+    //                       fontSize: 14,
+    //                     ),
+    //                     overflow: TextOverflow.ellipsis,
+    //                     maxLines: 1,
+    //                   )
+    //           ],
+    //         ),
+    //       ),
+    //       Spacer(),
+    //       IconButton(
+    //         onPressed: () => controller.changeExpan(),
+    //         icon: Icon(Icons.keyboard_arrow_down),
+    //       ),
+    //     ],
+    //   ),
   }
 }
 
 class AppBarCard extends StatelessWidget {
   const AppBarCard({
     Key? key,
+    required this.title,
   }) : super(key: key);
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     UploadController controller = Get.find();
@@ -242,7 +292,7 @@ class AppBarCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            controller.title.value,
+                            title,
                             style: primaryTextStyle.copyWith(
                               fontWeight: semiBold,
                               fontSize: 19,

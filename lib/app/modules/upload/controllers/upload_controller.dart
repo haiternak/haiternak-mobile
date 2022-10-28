@@ -2,16 +2,22 @@ import 'dart:io';
 
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:haiternak_mobile/app/data/disease_model.dart';
 
 class UploadController extends GetxController {
   final result = [].obs;
 
   final isPick = false.obs;
 
+  final isExpan = false.obs;
+
   final image = File('path').obs;
 
   final title = ''.obs;
+
+  List<DiseaseModel> listDisease = [];
+
+  void changeExpan() => isExpan.value = !isExpan.value;
 
   @override
   void onInit() {
@@ -74,15 +80,18 @@ class UploadController extends GetxController {
     switch (result[0]['label']) {
       case 'cocci':
         title.value = 'Cocci';
+        listDisease = DiseaseModel.listCocci;
         break;
       case 'healthy':
         title.value = 'Healthy';
         break;
       case 'ncd':
         title.value = 'NCD';
+        listDisease = DiseaseModel.listNewCastle;
         break;
       case 'salmo':
         title.value = 'Salmonella';
+        listDisease = DiseaseModel.listSalmonella;
         break;
       default:
     }
