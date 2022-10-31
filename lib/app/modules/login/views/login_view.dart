@@ -1,13 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/modules/register/views/register_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
+
+import '../../register/views/register_view2.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
@@ -151,7 +153,7 @@ class LoginView extends GetView<LoginController> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => RegisterView()));
+                                    builder: (context) => RegisterView2()));
                           },
                         style: TextStyle(
                             fontWeight: FontWeight.bold,

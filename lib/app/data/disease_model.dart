@@ -1,7 +1,10 @@
+import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:haiternak_mobile/app/data/treatment_model.dart';
 
 class DiseaseModel {
   String title, desc, status;
+  Color color;
 
   List<TreatmentModel> treatmentModel;
 
@@ -10,6 +13,7 @@ class DiseaseModel {
     required this.desc,
     required this.status,
     required this.treatmentModel,
+    required this.color,
   });
 
   // ! Dummy Model remove if database has been create
@@ -31,7 +35,7 @@ class DiseaseModel {
           desc:
               'Cara terbaik untuk menanggulangi Salmonelosis adalah mencegah masuknya kuman Salmonella sp. ke dalam suatu kelompok ayam dengan praktek manajemen yang optimal, khususnya pengamanan penerapan biosekuriti yang ketat. Prosedur manajemen peternakan yang baik harus diterapkan dengan sanitasi atau disinfeksi yang ketat, ayam harus dipelihara pada kandang yang dapat disanitasi atau didisinfeksi agar bebas residu kuman Salmonella dari periode pemeliharaan sebelumnya, ayam harus diberi pakan atau air minum yang bebas pencemaran kuman Salmonella, dan menghilangkan sumber infeksi atau faktor pendukung terjadinya infeksi, misalnya ayam carrier, rodens, unggas lain, hewan lain, pekerja peternakan pengunjung, alat transportasi. Vaksinasi terhadap spesies Salmonella tertentu belum dilakukan di lapangan, masih dalam skala percobaan.',
         ),
-      ],
+      ], color: Colors.red,
     ),
     DiseaseModel(
       title: 'Fowl Typhoid',
@@ -49,7 +53,7 @@ class DiseaseModel {
           desc:
               'Pencegahan dapat dilakukan dengan meningkatkan biosekuriti. Sama seperti infeksi Salmonella yang lain, unggas yang sembuh dapat menjadi pembawa penyakit (carrier). Vaksin fowl typhoid dapat berupa vaksin inaktif dan vaksin killed.',
         ),
-      ],
+      ], color: Colors.orange,
     ),
     DiseaseModel(
       title: 'Pullorum',
@@ -67,7 +71,7 @@ class DiseaseModel {
           desc:
               'Sebelum kandang dipakai harus dibersihkan dan dilabur dengan kapur atau disemprot dengan salah satu diantara NaOH 2%, formalin 1-2% Giocide atau difumigasi dengan campuran formalin dan KMn04. Bila memakai litter, harus diusahakan agar tetap kering dan tetap dijaga kebersihan serta ventilasi yang baik. Selain itu kandang hendaknya selalu kena sinar matahari dan diusahakan bebas dari hewan-hewan yang dapat memindahkan penyakit pullorum seperti burung gereja dan sebagainya.',
         ),
-      ],
+      ], color: Colors.yellow,
     ),
   ];
 
@@ -88,7 +92,7 @@ class DiseaseModel {
           desc:
               'Pencegahan penyakit dapat dilakukan dengan vaksinasi secara teratur, serta menjaga kebersihan dan sanitasi kandang.',
         ),
-      ],
+      ], color: Colors.red,
     ),
     DiseaseModel(
       title: 'Infectious Bronchitis',
@@ -106,7 +110,7 @@ class DiseaseModel {
           desc:
               'Vaksinasi dilakukan secara teratur sesuai dengan petunjuk pembuat vaksin atau didasarkan atas hasil uji titer antibodi. Sebagai garis pertahanan kedua, ayam di daerah masalah IB harus divaksinasi dengan vaksin hidup yang dimodifikasi untuk memberikan perlindungan.',
         ),
-      ],
+      ], color: Colors.orange,
     ),
     DiseaseModel(
       title: 'Infectious Laryngo',
@@ -124,7 +128,7 @@ class DiseaseModel {
           desc:
               'Jika diagnosa ILT diperoleh pada awal kejadian wabah, vaksinasi pada ayam yang tidak tertular akan memacu terbentuknya kekebalan yang memadai, sebelum penyakit ini datang menyerang. Oleh karena infeksi ILT sering sebagai akibat adanya ayam carier, maka sangatlah penting untuk menghindari mencampur ayam yang sembuh dari sakit dengan ayam lain yang belum terinfeksi ILT.',
         ),
-      ],
+      ], color: Colors.yellow,
     ),
   ];
 
@@ -146,7 +150,7 @@ class DiseaseModel {
           desc:
               'Pencegahan Coccidiosis pada unggas dapat dilakukan dengan penerapan tindakan biosecurity dan pemberian vaksin secara teratur. Selain itu, perbaikan manejemen kandang juga akan membantu mencegah penyebaran penyakit Coccidiosis.',
         ),
-      ],
+      ], color: Colors.red,
     ),
     DiseaseModel(
       title: 'Infeksi Parasit',
@@ -164,7 +168,7 @@ class DiseaseModel {
           desc:
               'Pencegahan dapat dimulai dari seleksi secara ketat ayam yang berkualitas pada awal pemeliharaan dan mencegah pencemaran bakteri pada air minum ataupun pakan. Pencegahan penyakit yang bersifat imunosupresif diprioritaskan sehingga infeksi E.coli dapat dicegah.',
         ),
-      ],
+      ], color: Colors.orange,
     ),
     DiseaseModel(
       title: 'Salmonella',
@@ -182,7 +186,7 @@ class DiseaseModel {
           desc:
               'Cara terbaik untuk menanggulangi Salmonelosis adalah mencegah masuknya kuman Salmonella sp. ke dalam suatu kelompok ayam dengan praktek manajemen yang optimal, khususnya pengamanan penerapan biosekuriti yang ketat. Prosedur manajemen peternakan yang baik harus diterapkan dengan sanitasi atau disinfeksi yang ketat, ayam harus dipelihara pada kandang yang dapat disanitasi atau didisinfeksi agar bebas residu kuman Salmonella dari periode pemeliharaan sebelumnya, ayam harus diberi pakan atau air minum yang bebas pencemaran kuman Salmonella, dan menghilangkan sumber infeksi atau faktor pendukung terjadinya infeksi, misalnya ayam carrier, rodens, unggas lain, hewan lain, pekerja peternakan/ pengunjung, alat transportasi. Vaksinasi terhadap spesies Salmonella tertentu belum dilakukan di lapangan, masih dalam skala percobaan.',
         ),
-      ],
+      ], color: Colors.yellow,
     ),
   ];
 }

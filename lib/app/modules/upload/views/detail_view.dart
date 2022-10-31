@@ -44,7 +44,7 @@ class DetailView extends GetView<UploadController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppBarCard(title: diseaseModel.title),
+              AppBarCard(title: diseaseModel.title, color: diseaseModel.color,),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(defaultPadding),
@@ -243,11 +243,13 @@ class AppBarCard extends StatelessWidget {
   const AppBarCard({
     Key? key,
     required this.title,
+    required this.color,
   }) : super(key: key);
   final String title;
+  final Color color;
   @override
   Widget build(BuildContext context) {
-    UploadController controller = Get.find();
+    // UploadController controller = Get.find();
 
     return Stack(
       alignment: Alignment.topCenter,
@@ -260,57 +262,61 @@ class AppBarCard extends StatelessWidget {
           height: getProperWidht(70),
           width: double.infinity,
         ),
-        Obx(() => Positioned(
-              bottom: 0,
-              child: Container(
-                padding: EdgeInsets.all(getProperWidht(14)),
-                width: getProperWidht(319),
-                decoration: BoxDecoration(
-                  color: kBackgroundColor1,
-                  borderRadius: BorderRadius.circular(28),
-                  boxShadow: softShadow,
+        Positioned(
+          bottom: 0,
+          child: Container(
+            padding: EdgeInsets.all(getProperWidht(14)),
+            width: getProperWidht(319),
+            decoration: BoxDecoration(
+              color: kBackgroundColor1,
+              borderRadius: BorderRadius.circular(28),
+              boxShadow: softShadow,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  height: getProperWidht(77),
+                  width: getProperWidht(77),
+                  child: SvgPicture.asset(
+                    'assets/icons/virus-icon.svg',
+                    color: color,
+                  ),
+                  // decoration: BoxDecoration(
+                  //   borderRadius: BorderRadius.circular(25),
+                  //   image: DecorationImage(
+                  //     image: FileImage(controller.image.value),
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  // ),
                 ),
-                child: Row(
-                  children: [
-                    Container(
-                      height: getProperWidht(77),
-                      width: getProperWidht(77),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        image: DecorationImage(
-                          image: FileImage(controller.image.value),
-                          fit: BoxFit.cover,
+                SizedBox(
+                  width: getProperWidht(14),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: primaryTextStyle.copyWith(
+                          fontWeight: semiBold,
+                          fontSize: 19,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: getProperWidht(14),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            title,
-                            style: primaryTextStyle.copyWith(
-                              fontWeight: semiBold,
-                              fontSize: 19,
-                            ),
-                          ),
-                          Text(
-                            'Salah satu penyakit Unggas',
-                            style: subtitleTextStyle.copyWith(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        'Salah satu penyakit Unggas',
+                        style: subtitleTextStyle.copyWith(
+                          fontSize: 14,
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            )),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
