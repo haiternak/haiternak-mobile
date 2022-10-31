@@ -1,35 +1,34 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/register/component/input.dart';
+import 'package:haiternak_mobile/app/modules/register/controllers/register_controller.dart';
+import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
 
 import '../../../../constants/constants.dart';
 import '../../login/views/login_view2.dart';
 
-class RegisterView2 extends StatefulWidget {
-  @override
-  _RegisterState createState() => _RegisterState();
-}
-
-class _RegisterState extends State<RegisterView2> {
-  bool _checkboxValue = false;
-
-  final double height = window.physicalSize.height;
+class RegisterView2 extends GetView<RegisterController> {
+  const RegisterView2({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        body: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/backgroundd.jpg"),
-                      fit: BoxFit.fitHeight)),
-            ),
-            SafeArea(
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/backgroundd.jpg"),
+                    fit: BoxFit.fitHeight)),
+          ),
+          SafeArea(
+            child: Form(
+              key: controller.registerFormKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: ListView(children: [
                 Padding(
                   padding: const EdgeInsets.only(
@@ -43,113 +42,114 @@ class _RegisterState extends State<RegisterView2> {
                       child: Column(
                         children: [
                           Container(
-                              height: MediaQuery.of(context).size.height * 0.15,
-                              decoration: BoxDecoration(
-                                  color: ArgonColors.white,
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: 0.5,
-                                          color: ArgonColors.muted))),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Center(
-                                      child: Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Text("Sign up with",
-                                        style: TextStyle(
-                                            color: ArgonColors.text,
-                                            fontSize: 16.0)),
-                                  )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Container(
-                                          // width: 0,
-                                          height: 36,
-                                          child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      ArgonColors.white,
-                                                  foregroundColor:
-                                                      kPrimaryColor),
-                                              onPressed: () {},
-                                              // shape: RoundedRectangleBorder(
-                                              //     borderRadius:
-                                              //         BorderRadius.circular(4)),
-                                              child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10,
-                                                      top: 10,
-                                                      left: 14,
-                                                      right: 14),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    children: [
-                                                      Icon(Icons.facebook,
-                                                          size: 13),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text("FACEBOOK",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 13))
-                                                    ],
-                                                  ))),
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            decoration: BoxDecoration(
+                              color: ArgonColors.white,
+                              border: Border(
+                                bottom: BorderSide(
+                                    width: 0.5, color: ArgonColors.muted),
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Text("Sign up with",
+                                      style: TextStyle(
+                                          color: ArgonColors.text,
+                                          fontSize: 16.0)),
+                                )),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        // width: 0,
+                                        height: 36,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  ArgonColors.white,
+                                              foregroundColor: kPrimaryColor),
+                                          onPressed: () {},
+                                          // shape: RoundedRectangleBorder(
+                                          //     borderRadius:
+                                          //         BorderRadius.circular(4)),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                bottom: 10,
+                                                top: 10,
+                                                left: 14,
+                                                right: 14),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Icon(Icons.facebook, size: 13),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  "FACEBOOK",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 13),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                        Container(
-                                          // width: 0,
-                                          height: 36,
-                                          child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      ArgonColors.white,
-                                                  foregroundColor:
-                                                      kPrimaryColor),
-                                              onPressed: () {},
-                                              // shape: RoundedRectangleBorder(
-                                              //     borderRadius:
-                                              //         BorderRadius.circular(4)),
-                                              child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10,
-                                                      top: 10,
-                                                      left: 8,
-                                                      right: 8),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    children: [
-                                                      Icon(Icons.mail,
-                                                          size: 13),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text("GMAIL",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 13))
-                                                    ],
-                                                  ))),
+                                      ),
+                                      Container(
+                                        // width: 0,
+                                        height: 36,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  ArgonColors.white,
+                                              foregroundColor: kPrimaryColor),
+                                          onPressed: () {},
+                                          // shape: RoundedRectangleBorder(
+                                          //     borderRadius:
+                                          //         BorderRadius.circular(4)),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                bottom: 10,
+                                                top: 10,
+                                                left: 8,
+                                                right: 8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Icon(Icons.mail, size: 13),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  "GMAIL",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 13),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                  // Divider()
-                                ],
-                              )),
+                                ),
+                                // Divider()
+                              ],
+                            ),
+                          ),
                           Container(
                               height: MediaQuery.of(context).size.height * 0.63,
                               color: Color.fromRGBO(244, 245, 247, 1),
@@ -167,11 +167,12 @@ class _RegisterState extends State<RegisterView2> {
                                             top: 24.0, bottom: 24.0),
                                         child: Center(
                                           child: Text(
-                                              "Or sign up with the classic way",
-                                              style: TextStyle(
-                                                  color: ArgonColors.text,
-                                                  fontWeight: FontWeight.w200,
-                                                  fontSize: 16)),
+                                            "Or sign up with the classic way",
+                                            style: TextStyle(
+                                                color: ArgonColors.text,
+                                                fontWeight: FontWeight.w200,
+                                                fontSize: 16),
+                                          ),
                                         ),
                                       ),
                                       Column(
@@ -183,19 +184,44 @@ class _RegisterState extends State<RegisterView2> {
                                             child: Input(
                                               placeholder: "Name",
                                               prefixIcon: Icon(Icons.school),
+                                              controller: controller
+                                                  .namaLengkapController,
+                                              onSaved: (value) {
+                                                controller.namaLengkap = value;
+                                              },
+                                              validator: (value) {
+                                                return controller
+                                                    .validatenamaLengkap(value);
+                                              },
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Input(
-                                                placeholder: "Email",
-                                                prefixIcon: Icon(Icons.email)),
+                                              placeholder: "Email",
+                                              prefixIcon: Icon(Icons.email),
+                                              onSaved: (value) {
+                                                controller.password = value;
+                                              },
+                                              validator: (value) {
+                                                return controller
+                                                    .validatePassword(value);
+                                              },
+                                            ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Input(
-                                                placeholder: "Password",
-                                                prefixIcon: Icon(Icons.lock)),
+                                              placeholder: "Password",
+                                              prefixIcon: Icon(Icons.lock),
+                                              onSaved: (value) {
+                                                controller.password = value;
+                                              },
+                                              validator: (value) {
+                                                return controller
+                                                    .validatePassword(value);
+                                              },
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -214,24 +240,25 @@ class _RegisterState extends State<RegisterView2> {
                                             ),
                                             onPressed: () {
                                               // Respond to button press
-                                              Navigator.pushNamed(
-                                                  context, '/home');
+                                              controller.checkRegister();
                                             },
                                             // shape: RoundedRectangleBorder(
                                             //   borderRadius:
                                             //       BorderRadius.circular(4.0),
                                             // ),
                                             child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 16.0,
-                                                    right: 16.0,
-                                                    top: 12,
-                                                    bottom: 12),
-                                                child: Text("REGISTER",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontSize: 16.0))),
+                                              padding: EdgeInsets.only(
+                                                  left: 16.0,
+                                                  right: 16.0,
+                                                  top: 12,
+                                                  bottom: 12),
+                                              child: Text(
+                                                "REGISTER",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 16.0),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -249,11 +276,7 @@ class _RegisterState extends State<RegisterView2> {
                                                         FontWeight.w200)),
                                             GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              LoginView2()));
+                                                  Get.back();
                                                 },
                                                 child: Container(
                                                   margin:
@@ -275,8 +298,10 @@ class _RegisterState extends State<RegisterView2> {
                       )),
                 ),
               ]),
-            )
-          ],
-        ));
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

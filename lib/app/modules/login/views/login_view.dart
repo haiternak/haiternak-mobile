@@ -146,19 +146,19 @@ class LoginView extends GetView<LoginController> {
                     //child: Text('Don\'t have an account? Create'),
                     child: Text.rich(TextSpan(children: [
                       TextSpan(text: "Belum Punya Akun? "),
-                      TextSpan(
-                        text: 'Daftar',
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterView2()));
-                          },
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.secondary),
-                      ),
+                      // TextSpan(
+                      //   text: 'Daftar',
+                      //   recognizer: TapGestureRecognizer()
+                      //     ..onTap = () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => RegisterView2()));
+                      //     },
+                      //   style: TextStyle(
+                      //       fontWeight: FontWeight.bold,
+                      //       color: Theme.of(context).colorScheme.secondary),
+                      // ),
                     ])),
                   ),
                 ],
