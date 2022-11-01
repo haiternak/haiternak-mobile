@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/register/component/input.dart';
 import 'package:haiternak_mobile/app/modules/register/controllers/register_controller.dart';
-import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
 
 import '../../../../constants/constants.dart';
-import '../../login/views/login_view2.dart';
 
 class RegisterView2 extends GetView<RegisterController> {
   const RegisterView2({super.key});
@@ -22,8 +20,8 @@ class RegisterView2 extends GetView<RegisterController> {
           Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/backgroundd.jpg"),
-                    fit: BoxFit.fitHeight)),
+                    image: AssetImage("assets/images/latarlogin.jpg"),
+                    fit: BoxFit.cover)),
           ),
           SafeArea(
             child: Form(

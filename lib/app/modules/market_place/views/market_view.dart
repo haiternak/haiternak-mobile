@@ -117,7 +117,10 @@ class MarketView extends GetView<MarketController> {
               SizedBox(
                 height: getProperWidht(18),
               ),
-              CarouselScroll(),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: CarouselScroll(),
+              ),
               SizedBox(
                 height: getProperWidht(18),
               ),
@@ -174,7 +177,10 @@ class MarketView extends GetView<MarketController> {
               SizedBox(
                 height: getProperWidht(18),
               ),
-              CarouselScroll(),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: CarouselScroll(),
+              ),
               SizedBox(
                 height: getProperWidht(18),
               ),

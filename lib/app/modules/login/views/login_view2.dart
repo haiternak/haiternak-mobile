@@ -8,7 +8,6 @@ import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
 
 import '../../../../constants/constants.dart';
-import '../../login/views/login_view.dart';
 
 class LoginView2 extends GetView<LoginController> {
   const LoginView2({super.key});
@@ -22,8 +21,8 @@ class LoginView2 extends GetView<LoginController> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/backgroundd.jpg"),
-                  fit: BoxFit.fitHeight),
+                  image: AssetImage("assets/images/latarlogin.jpg"),
+                  fit: BoxFit.cover),
             ),
           ),
           SafeArea(
