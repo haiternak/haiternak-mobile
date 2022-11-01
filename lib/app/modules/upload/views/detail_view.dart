@@ -44,7 +44,10 @@ class DetailView extends GetView<UploadController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppBarCard(title: diseaseModel.title, color: diseaseModel.color,),
+              AppBarCard(
+                title: diseaseModel.title,
+                color: diseaseModel.color,
+              ),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(defaultPadding),
@@ -162,12 +165,12 @@ class RecomendationCard extends StatelessWidget {
         ),
         iconColor: kPrimaryColor,
         leading: Container(
-          height: getProperWidht(55),
-          width: getProperWidht(55),
+          height: getProperWidht(45),
+          width: getProperWidht(45),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: AssetImage('assets/images/perawatan-image.png'),
+              image: AssetImage('assets/icons/care-icon.png'),
               fit: BoxFit.cover,
             ),
           ),
