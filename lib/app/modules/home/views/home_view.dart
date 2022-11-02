@@ -10,6 +10,7 @@ import 'package:haiternak_mobile/app/modules/home/views/highlight_view.dart';
 import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
+import 'package:haiternak_mobile/utils/utils.dart';
 
 import '../controllers/home_controller.dart';
 import 'components/card_caraousel.dart';
@@ -103,53 +104,58 @@ class RekomendationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: getProperWidht(14)),
+    return GestureDetector(
+      onTap: () {
+        Dialogs().dialogEmpty;
+      },
       child: Container(
-        decoration: BoxDecoration(
-          boxShadow: softShadow,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Container(
-            width: getProperWidht(133),
-            height: getProperWidht(133),
-            decoration: BoxDecoration(
-              color: kBackgroundColor1,
-            ),
-            child: GestureDetector(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                      flex: 2,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(imagePath),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      )),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(getProperWidht(10)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Text(
-                              title,
-                              style: primaryTextStyle,
+        margin: EdgeInsets.only(right: getProperWidht(14)),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: softShadow,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              width: getProperWidht(133),
+              height: getProperWidht(133),
+              decoration: BoxDecoration(
+                color: kBackgroundColor1,
+              ),
+              child: GestureDetector(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(imagePath),
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          Spacer(),
-                        ],
+                        )),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(getProperWidht(10)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                title,
+                                style: primaryTextStyle,
+                              ),
+                            ),
+                            Spacer(),
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

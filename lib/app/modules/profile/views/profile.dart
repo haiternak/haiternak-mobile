@@ -1,7 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
+import 'package:haiternak_mobile/utils/utils.dart';
 
 import '../../bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../components/table-cell.dart';
@@ -80,7 +83,9 @@ class Profile extends StatelessWidget {
                                           endIndent: 32.0,
                                         ),
                                         TableCellSettings(
-                                            title: "Notifikasi", onTap: () {}),
+                                          title: "Notifikasi",
+                                          onTap: () => Dialogs().dialogEmpty,
+                                        ),
                                         Divider(
                                           height: 10.0,
                                           thickness: 1.5,
@@ -89,7 +94,7 @@ class Profile extends StatelessWidget {
                                         ),
                                         TableCellSettings(
                                             title: "Riwayat Transaksi",
-                                            onTap: () {}),
+                                            onTap: () => Dialogs().dialogEmpty),
                                         Divider(
                                           height: 10.0,
                                           thickness: 1.5,
@@ -97,8 +102,9 @@ class Profile extends StatelessWidget {
                                           endIndent: 32.0,
                                         ),
                                         TableCellSettings(
-                                            title: "Kelola Langganan",
-                                            onTap: () {}),
+                                          title: "Kelola Langganan",
+                                          onTap: () => Dialogs().dialogEmpty,
+                                        ),
                                         Divider(
                                           height: 10.0,
                                           thickness: 1.5,
@@ -106,10 +112,10 @@ class Profile extends StatelessWidget {
                                           endIndent: 32.0,
                                         ),
                                         TableCellSettings(
-                                            title: "Keluar",
-                                            onTap: () {
-                                              //Kembali Ke Login
-                                            }),
+                                          title: "Keluar",
+                                          onTap: () =>
+                                              Get.toNamed(Routes.LOGIN),
+                                        ),
                                       ],
                                     ),
                                   ),

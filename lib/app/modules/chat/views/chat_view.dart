@@ -24,78 +24,74 @@ class ChatView extends GetView<ChatController> {
         child: Container(
           width: double.infinity,
           padding: EdgeInsets.all(defaultPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: getProperWidht(80),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 110),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Image.asset('assets/images/cuate.png')],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: getProperWidht(50),
                 ),
-              ),
-              SizedBox(
-                height: getProperWidht(50),
-              ),
-              Center(
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Opss tidak ada riwayat chat?",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 16, 91, 153),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
+                Image.asset('assets/images/cuate.png'),
+                SizedBox(
+                  height: getProperWidht(25),
+                ),
+                Center(
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "Opss tidak ada riwayat chat?",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 16, 91, 153),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: getProperWidht(20),
-              ),
-              Center(
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Anda belum pernah melakukan konsultasi dengan ahli",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 117, 117, 117),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 18,
+                SizedBox(
+                  height: getProperWidht(18),
+                ),
+                Center(
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "Anda belum pernah melakukan konsultasi dengan ahli",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 117, 117, 117),
+                      fontWeight: FontWeight.w300,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: getProperWidht(10),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(50),
-                  child: Container(
-                    width: getProperWidht(300),
-                    height: getProperHeight(getProperWidht(50)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(DoctorListView());
-                      }, // masih direct ke home
-                      child: Text(
-                        'Konsultasi Sekarang',
-                        style: whiteTextStyle.copyWith(
-                          fontWeight: bold,
-                          fontSize: 18,
+                SizedBox(
+                  height: getProperWidht(10),
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Container(
+                      width: getProperWidht(300),
+                      height: getProperHeight(getProperWidht(50)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(DoctorListView());
+                        }, // masih direct ke home
+                        child: Text(
+                          'Konsultasi Sekarang',
+                          style: whiteTextStyle.copyWith(
+                            fontWeight: bold,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: kPrimaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kPrimaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
