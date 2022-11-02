@@ -109,25 +109,35 @@ class UploadView extends GetView<UploadController> {
                   child: controller.isPick.value ? OutputImage() : InputImage(),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: getProperHeight(getProperWidht(56)),
-                child: ElevatedButton(
-                  onPressed: () async {
-                    await controller.imageClassification();
-                    Get.to(ResultView());
-                  },
-                  child: Text(
-                    'Upload Gambar',
-                    style: whiteTextStyle.copyWith(
-                      fontWeight: bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+              Obx(
+                () => Container(
+                  width: double.infinity,
+                  height: getProperHeight(getProperWidht(56)),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      controller.onLoading();
+                      await controller.imageClassification();
+                      Get.to(ResultView());
+                      controller.onLoading();
+                    },
+                    child: !controller.isLoading.value
+                        ? Text(
+                            'Upload Gambar',
+                            style: whiteTextStyle.copyWith(
+                              fontWeight: bold,
+                              fontSize: 18,
+                            ),
+                          )
+                        : Center(
+                            child: CircularProgressIndicator(
+                              color: kBackgroundColor1,
+                            ),
+                          ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: kPrimaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
                 ),
