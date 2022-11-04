@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
@@ -92,7 +91,7 @@ class ImageAppBar extends StatelessWidget {
             children: [
               IconButton(
                 iconSize: getProperWidht(44),
-                onPressed: () {},
+                onPressed: () => Get.back(),
                 icon: SvgPicture.asset(
                   'assets/icons/back-icon.svg',
                 ),

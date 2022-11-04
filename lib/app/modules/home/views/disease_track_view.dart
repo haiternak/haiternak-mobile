@@ -100,8 +100,8 @@ class DiseaseTrackView extends GetView<HomeController> {
                         height: getProperWidht(32),
                       ),
                       Container(
-                        width: getProperWidht(115),
-                        height: getProperWidht(115),
+                        width: getProperWidht(125),
+                        height: getProperWidht(125),
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: kSecondaryColor,

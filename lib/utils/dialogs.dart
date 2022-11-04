@@ -20,3 +20,15 @@ class Dialogs {
     confirmTextColor: kBackgroundColor1,
   );
 }
+
+class DialogsLottie {
+  var dialoglottie = Get.defaultDialog(
+    content: Column(
+      children: [
+        Lottie.asset('assets/json/loading-anal.json', width: 200, height: 200),
+        Text('Dalam Proses Identifikasi')
+      ],
+    ),
+    title: '',
+  );
+}

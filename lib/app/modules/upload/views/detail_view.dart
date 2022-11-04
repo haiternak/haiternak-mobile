@@ -308,7 +308,7 @@ class AppBarCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Salah satu penyakit Unggas',
+                        'Penyakit Unggas',
                         style: subtitleTextStyle.copyWith(
                           fontSize: 14,
                         ),

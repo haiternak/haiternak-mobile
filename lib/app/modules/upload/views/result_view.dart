@@ -47,8 +47,47 @@ class ResultView extends GetView<UploadController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               controller.title.value == 'Healthy'
-                  ? SvgPicture.asset(
-                      'assets/images/success-state.svg',
+                  ? Column(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/success-state.svg',
+                        ),
+                        SizedBox(
+                          height: getProperWidht(11),
+                        ),
+                        Center(
+                          child: Text(
+                            'Kelihatannya Ayam Kamu Terindikasi Sehat ',
+                            textAlign: TextAlign.center,
+                            style: primaryTextStyle.copyWith(
+                              fontWeight: bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: getProperHeight(getProperWidht(56)),
+                          margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text(
+                              'Analisis Gambar Lain',
+                              style: whiteTextStyle.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: kSecondaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     )
                   : ResultContent(),
               Column(

@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../utils/utils.dart';
 import '../controllers/upload_controller.dart';
 
 class UploadView extends GetView<UploadController> {
@@ -116,9 +116,13 @@ class UploadView extends GetView<UploadController> {
                   child: ElevatedButton(
                     onPressed: () async {
                       controller.onLoading();
+                      DialogsLottie().dialoglottie;
                       await controller.imageClassification();
-                      Get.to(ResultView());
-                      controller.onLoading();
+                      Future.delayed(Duration(seconds: 3), () {
+                        Navigator.of(context).pop();
+                        controller.onLoading();
+                        Get.to(ResultView());
+                      });
                     },
                     child: !controller.isLoading.value
                         ? Text(

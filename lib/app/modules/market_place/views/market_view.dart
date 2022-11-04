@@ -36,7 +36,7 @@ class MarketView extends GetView<MarketController> {
                         ),
                         SvgPicture.asset('assets/images/logo.svg'),
                         Container(
-                          width: 321.0,
+                          width: 311.0,
                           child: Center(
                             child: Text(
                               'E-Pakan',
