@@ -1,9 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/routes/app_pages.dart';
+
+import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
   final currentIndex = 0.obs;
+  final _auth = FirebaseAuth.instance;
+  String? email;
+  String? password;
+  String? notif;
 
   //TODO: Implement LoginController
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -15,15 +21,12 @@ class LoginController extends GetxController {
     this.currentIndex.value = currentIndex;
   }
 
-  var email = '';
-  var password = '';
   @override
   void onInit() {
     super.onInit();
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
-
 
   @override
   void onClose() {
@@ -45,13 +48,25 @@ class LoginController extends GetxController {
     return null;
   }
 
-  void checkLogin() {
+  void checkLogin() async {
     final isValid = loginFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    } else {
-      Get.offAllNamed(Routes.HOME);
-    }
     loginFormKey.currentState!.save();
+    // if (!isValid) {
+    //   return;
+    // } else {
+    //   Get.offAllNamed(Routes.HOME);
+    // }
+    //
+    try {
+      await _auth.signInWithEmailAndPassword(
+          email: email!, password: password!);
+
+      if (_auth.currentUser != null) {
+        Get.offAllNamed(Routes.HOME);
+      }
+    } catch (e) {
+      print(e);
+      notif = e.toString();
+    }
   }
 }

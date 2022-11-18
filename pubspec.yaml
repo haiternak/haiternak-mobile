@@ -18,6 +18,12 @@ dependencies:
   icony: 1.0.5
   icon: 2.2.1
   flutter_spinkit: ^5.1.0
+  firebase_auth: ^4.1.1
+  cloud_firestore: ^4.0.4
+  firebase_core: ^2.1.1
+  google_sign_in: ^5.1.1
+  flutter_progress_hud: ^2.0.2
+
 
   flutter: 
     sdk: flutter

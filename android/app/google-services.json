@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093215988382",
+    "project_id": "haiternak",
+    "storage_bucket": "haiternak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093215988382:android:3eae6a66abd84a18fce98f",
+        "android_client_info": {
+          "package_name": "com.haiternak.haiternak_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093215988382-3te40b8j06fo0786drkob807hovkg8ok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHSc5UVTB2gNuADiYo1KBpH85ULROXg9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093215988382-3te40b8j06fo0786drkob807hovkg8ok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

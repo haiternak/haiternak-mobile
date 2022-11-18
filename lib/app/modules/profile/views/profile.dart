@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/routes/app_pages.dart';
@@ -10,6 +11,8 @@ import '../../bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import '../components/table-cell.dart';
 
 class Profile extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,10 +115,11 @@ class Profile extends StatelessWidget {
                                           endIndent: 32.0,
                                         ),
                                         TableCellSettings(
-                                          title: "Keluar",
-                                          onTap: () =>
-                                              Get.toNamed(Routes.LOGIN),
-                                        ),
+                                            title: "Keluar",
+                                            onTap: () {
+                                              _auth.signOut();
+                                              Get.toNamed(Routes.LOGIN);
+                                            }),
                                       ],
                                     ),
                                   ),

@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/routes/app_pages.dart';
+
+import '../../../routes/app_pages.dart';
 
 class RegisterController extends GetxController {
   final currentIndex = 0.obs;
+  final _auth = FirebaseAuth.instance;
 
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   late TextEditingController emailController;
@@ -30,7 +34,6 @@ class RegisterController extends GetxController {
     namaLengkapController = TextEditingController();
     usernameController = TextEditingController();
   }
-
 
   @override
   void onClose() {
@@ -68,13 +71,40 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  void checkRegister() {
+  // void checkRegister() {
+  //   final isValid = registerFormKey.currentState!.validate();
+  //   if (!isValid) {
+  //     return;
+  //   } else {
+  //     Get.offAllNamed(Routes.LOGIN);
+  //   }
+  //   registerFormKey.currentState!.save();
+  // }
+
+  void checkRegister() async {
+    // final isValid = loginFormKey.currentState!.validate();
+    // if (!isValid) {
+    //   return;
+    // } else {
+    //   Get.offAllNamed(Routes.HOME);
+    // }
+    // loginFormKey.currentState!.save();
+
+    // final progrss = ProgressHUD.of(context);
+    // progrss?.showWithText('Loading');
     final isValid = registerFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    } else {
-      Get.offAllNamed(Routes.LOGIN);
-    }
     registerFormKey.currentState!.save();
+    try {
+      final newUser = await _auth.createUserWithEmailAndPassword(
+          email: email!, password: password!);
+
+      if (newUser.credential != null) {
+        // progrss?.dismiss();
+        Get.offAllNamed(Routes.HOME);
+      }
+    } catch (e) {
+      // progrss?.dismiss();
+      print(e);
+    }
   }
 }
