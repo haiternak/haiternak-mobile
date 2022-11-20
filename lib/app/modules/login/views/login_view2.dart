@@ -6,6 +6,8 @@ import 'package:haiternak_mobile/app/modules/login/controllers/login_controller.
 import 'package:haiternak_mobile/app/modules/register/component/input.dart';
 import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../../../../constants/constants.dart';
 
@@ -115,8 +117,16 @@ class LoginView2 extends GetView<LoginController> {
                                             // ),
                                             foregroundColor: kPrimaryColor,
                                           ),
-                                          onPressed: () {
-                                            controller.checkLogin();
+                                          onPressed: () async {
+                                            await controller.checkLogin();
+
+                                            if (controller.isError == true) {
+                                              QuickAlert.show(
+                                                context: context,
+                                                type: QuickAlertType.error,
+                                                text: controller.notif,
+                                              );
+                                            }
                                           },
                                           // shape: RoundedRectangleBorder(
                                           //   borderRadius:

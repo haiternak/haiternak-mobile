@@ -3,12 +3,17 @@ import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/chat/views/detail_chat_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
+
 import '../controllers/chat_controller.dart';
 
 class DoctorListView extends GetView<ChatController> {
   const DoctorListView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    ChatController controller = Get.put(ChatController());
+
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -77,7 +82,7 @@ class DoctorListView extends GetView<ChatController> {
                                   ),
                                 ),
                                 Text(
-                                  'Depression',
+                                  'Ahli Ternak Ayam',
                                   style: primaryTextStyle.copyWith(
                                     fontSize: 16,
                                   ),

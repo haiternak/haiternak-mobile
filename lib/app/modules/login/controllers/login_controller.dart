@@ -10,6 +10,7 @@ class LoginController extends GetxController {
   String? email;
   String? password;
   String? notif;
+  bool isError = false;
 
   //TODO: Implement LoginController
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -48,7 +49,8 @@ class LoginController extends GetxController {
     return null;
   }
 
-  void checkLogin() async {
+  Future<void> checkLogin() async {
+    isError = false;
     final isValid = loginFormKey.currentState!.validate();
     loginFormKey.currentState!.save();
     // if (!isValid) {
@@ -62,10 +64,12 @@ class LoginController extends GetxController {
           email: email!, password: password!);
 
       if (_auth.currentUser != null) {
+        isError = false;
         Get.offAllNamed(Routes.HOME);
       }
     } catch (e) {
       print(e);
+      isError = true;
       notif = e.toString();
     }
   }

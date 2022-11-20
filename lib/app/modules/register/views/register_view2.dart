@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/register/component/input.dart';
 import 'package:haiternak_mobile/app/modules/register/controllers/register_controller.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../../../../constants/constants.dart';
 
@@ -199,7 +201,7 @@ class RegisterView2 extends GetView<RegisterController> {
                                               placeholder: "Email",
                                               prefixIcon: Icon(Icons.email),
                                               onSaved: (value) {
-                                                controller.password = value;
+                                                controller.email = value;
                                               },
                                               validator: (value) {
                                                 return controller
@@ -236,9 +238,17 @@ class RegisterView2 extends GetView<RegisterController> {
                                               // ),
                                               foregroundColor: kPrimaryColor,
                                             ),
-                                            onPressed: () {
+                                            onPressed: () async {
                                               // Respond to button press
-                                              controller.checkRegister();
+                                              await controller.checkRegister();
+
+                                              if (controller.isError == true) {
+                                                QuickAlert.show(
+                                                  context: context,
+                                                  type: QuickAlertType.error,
+                                                  text: controller.notif,
+                                                );
+                                              }
                                             },
                                             // shape: RoundedRectangleBorder(
                                             //   borderRadius:

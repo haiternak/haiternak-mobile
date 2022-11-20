@@ -14,6 +14,10 @@ class RegisterController extends GetxController {
   late TextEditingController passwordController;
   late TextEditingController namaLengkapController;
   late TextEditingController usernameController;
+  String? email;
+  String? password;
+  String? notif;
+  bool? isError;
 
   PageController pageController = PageController();
 
@@ -21,8 +25,6 @@ class RegisterController extends GetxController {
     this.currentIndex.value = currentIndex;
   }
 
-  var email = '';
-  var password = '';
   var namaLengkap = '';
   var username = '';
 
@@ -81,7 +83,8 @@ class RegisterController extends GetxController {
   //   registerFormKey.currentState!.save();
   // }
 
-  void checkRegister() async {
+  Future<void> checkRegister() async {
+    isError = false;
     // final isValid = loginFormKey.currentState!.validate();
     // if (!isValid) {
     //   return;
@@ -97,13 +100,11 @@ class RegisterController extends GetxController {
     try {
       final newUser = await _auth.createUserWithEmailAndPassword(
           email: email!, password: password!);
-
-      if (newUser.credential != null) {
-        // progrss?.dismiss();
-        Get.offAllNamed(Routes.HOME);
-      }
+      Get.offAllNamed(Routes.HOME);
     } catch (e) {
       // progrss?.dismiss();
+      isError = true;
+      notif = e.toString();
       print(e);
     }
   }
