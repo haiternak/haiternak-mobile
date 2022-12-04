@@ -2,14 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
+import 'package:haiternak_mobile/app/modules/home/views/components/card-horizontal.dart';
 import 'package:haiternak_mobile/app/modules/home/views/disease_track_view.dart';
 import 'package:haiternak_mobile/app/modules/home/views/highlight_view.dart';
 import 'package:haiternak_mobile/app/routes/app_pages.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
+import 'package:haiternak_mobile/utils/utils.dart';
 
 import '../controllers/home_controller.dart';
 import 'components/card_caraousel.dart';
@@ -45,10 +46,20 @@ class HomeView extends GetView<HomeController> {
                   padding: EdgeInsets.all(getProperWidht(18)),
                   child: Row(
                     children: [
-                      RekomendationCard(),
-                      RekomendationCard(),
-                      RekomendationCard(),
-                      RekomendationCard(),
+                      RekomendationCard(
+                        title: 'Lapak Ternak',
+                        imagePath: 'assets/images/rekomcard1.png',
+                      ),
+                      RekomendationCard(
+                        title: 'Pakan Paylater',
+                        imagePath: 'assets/images/rekomcard2.png',
+                      ),
+                      RekomendationCard(
+                          title: 'Pencatatan',
+                          imagePath: 'assets/images/rekomcard3.png'),
+                      RekomendationCard(
+                          title: 'Promotion',
+                          imagePath: 'assets/images/rekomcard4.png'),
                     ],
                   ),
                 ),
@@ -62,54 +73,13 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: (() => Get.to(HighlightView())),
-                child: Padding(
-                  padding: EdgeInsets.all(18),
-                  child: Container(
-                    height: getProperHeight(140),
-                    width: double.infinity,
-                    padding: EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(28),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/image.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Expanded(
-                          flex: 4,
-                          child: Text(
-                            'Memahami pentingnya vaksinasi Pada Ternak',
-                            style: whiteTextStyle.copyWith(
-                              fontWeight: semiBold,
-                              fontSize: 16,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: kBackgroundColor1,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.arrow_circle_right_outlined,
-                              color: kPrimaryColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              CardHorizontal(
+                cta: "Lihat Artikel",
+                title: 'Memahami Pentingnya Vaksinasi Pada Ternak',
+                img: 'assets/images/image.png',
+                tap: (() => Get.to(
+                      HighlightView(),
+                    )),
               ),
             ],
           ),
@@ -123,61 +93,70 @@ class HomeView extends GetView<HomeController> {
 class RekomendationCard extends StatelessWidget {
   const RekomendationCard({
     Key? key,
+    required this.title,
+    required this.imagePath,
+    this.onclick,
   }) : super(key: key);
+
+  final String title;
+  final String imagePath;
+  final Function()? onclick;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: getProperWidht(14)),
+    return GestureDetector(
+      onTap: () {
+        Dialogs().dialogEmpty;
+      },
       child: Container(
-        decoration: BoxDecoration(
-          boxShadow: softShadow,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Container(
-            width: getProperWidht(153),
-            height: getProperWidht(184),
-            decoration: BoxDecoration(
-              color: kBackgroundColor1,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                    child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/image.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                )),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(getProperWidht(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Vaksin Salmonela',
-                          style: primaryTextStyle,
+        margin: EdgeInsets.only(right: getProperWidht(14)),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: softShadow,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              width: getProperWidht(133),
+              height: getProperWidht(133),
+              decoration: BoxDecoration(
+                color: kBackgroundColor1,
+              ),
+              child: GestureDetector(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(imagePath),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(getProperWidht(10)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                title,
+                                style: primaryTextStyle,
+                              ),
+                            ),
+                            Spacer(),
+                          ],
                         ),
-                        Text(
-                          'CV. Ayam Sejahtera',
-                          style: primaryTextStyle,
-                        ),
-                        Spacer(),
-                        Text(
-                          '17 Terjual',
-                          style: primaryTextStyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ),

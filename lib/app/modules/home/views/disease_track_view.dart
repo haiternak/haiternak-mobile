@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
@@ -7,6 +7,8 @@ import 'package:haiternak_mobile/constants/constants.dart';
 import '../controllers/home_controller.dart';
 
 class DiseaseTrackView extends GetView<HomeController> {
+  String selectedCurrency = 'Weekly';
+
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
@@ -95,11 +97,11 @@ class DiseaseTrackView extends GetView<HomeController> {
                         ],
                       ),
                       SizedBox(
-                        height: getProperWidht(42),
+                        height: getProperWidht(32),
                       ),
                       Container(
-                        width: getProperWidht(100),
-                        height: getProperWidht(100),
+                        width: getProperWidht(125),
+                        height: getProperWidht(125),
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: kSecondaryColor,
@@ -114,16 +116,32 @@ class DiseaseTrackView extends GetView<HomeController> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                'Weekly',
-                                style: subtitleTextStyle.copyWith(
-                                  fontSize: 18,
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down_outlined,
-                                color: kPrimaryColor,
-                              ),
+                              DropdownButton<String>(
+                                value: selectedCurrency,
+                                items: [
+                                  DropdownMenuItem(
+                                      value: 'Weekly', child: Text('Weekly')),
+                                  DropdownMenuItem(
+                                      value: 'Monthly', child: Text('Monthly')),
+                                  DropdownMenuItem(
+                                      value: 'Yearly', child: Text('Yearly')),
+                                ],
+                                onChanged: (value) {
+                                  selectedCurrency = value!;
+                                  print(value);
+                                },
+                              )
+                              //
+                              // Text(
+                              //   'Weekly',
+                              //   style: subtitleTextStyle.copyWith(
+                              //     fontSize: 18,
+                              //   ),
+                              // ),
+                              // Icon(
+                              //   Icons.arrow_drop_down_outlined,
+                              //   color: kPrimaryColor,
+                              // ),
                             ],
                           ),
                         ),
@@ -152,9 +170,12 @@ class DiseaseTrackView extends GetView<HomeController> {
                           SizedBox(
                             height: getProperWidht(14),
                           ),
-                          RoundedCard(),
-                          RoundedCard(),
-                          RoundedCard(),
+                          RoundedCard(
+                              title: '1. Salmonella', jumlah: '495 kasus'),
+                          RoundedCard(
+                              title: '2.NewCastle', jumlah: '310 kasus'),
+                          RoundedCard(
+                              title: '3.Berak Darah', jumlah: '195 kasus'),
                         ],
                       ),
                     ],
@@ -171,8 +192,13 @@ class DiseaseTrackView extends GetView<HomeController> {
 
 class RoundedCard extends StatelessWidget {
   const RoundedCard({
+    required this.title,
+    required this.jumlah,
     Key? key,
   }) : super(key: key);
+
+  final String title;
+  final String jumlah;
 
   @override
   Widget build(BuildContext context) {
@@ -190,14 +216,14 @@ class RoundedCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '1. Salmonella',
+            title,
             style: primaryTextStyle.copyWith(
               fontWeight: medium,
               fontSize: 16,
             ),
           ),
           Text(
-            '456+ Kasus',
+            jumlah,
             style: subtitleTextStyle.copyWith(
               fontSize: 14,
             ),

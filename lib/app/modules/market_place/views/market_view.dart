@@ -36,7 +36,7 @@ class MarketView extends GetView<MarketController> {
                         ),
                         SvgPicture.asset('assets/images/logo.svg'),
                         Container(
-                          width: 321.0,
+                          width: 300.0,
                           child: Center(
                             child: Text(
                               'E-Pakan',
@@ -117,7 +117,10 @@ class MarketView extends GetView<MarketController> {
               SizedBox(
                 height: getProperWidht(18),
               ),
-              CarouselScroll(),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: CarouselScroll(),
+              ),
               SizedBox(
                 height: getProperWidht(18),
               ),
@@ -174,7 +177,10 @@ class MarketView extends GetView<MarketController> {
               SizedBox(
                 height: getProperWidht(18),
               ),
-              CarouselScroll(),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: CarouselScroll(),
+              ),
               SizedBox(
                 height: getProperWidht(18),
               ),

@@ -23,6 +23,9 @@ class BottomNavBarController extends GetxController {
       case 3:
         Get.toNamed(Routes.CHAT);
         break;
+      case 4:
+        Get.toNamed(Routes.PROFILE);
+        break;
       default:
     }
   }

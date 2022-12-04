@@ -6,9 +6,12 @@ import 'package:haiternak_mobile/app/modules/chat/views/chat_view.dart';
 import 'package:haiternak_mobile/app/modules/home/bindings/home_binding.dart';
 import 'package:haiternak_mobile/app/modules/home/views/home_view.dart';
 import 'package:haiternak_mobile/app/modules/login/bindings/login_binding.dart';
-import 'package:haiternak_mobile/app/modules/login/views/login_view.dart';
+import 'package:haiternak_mobile/app/modules/login/views/login_view2.dart';
 import 'package:haiternak_mobile/app/modules/onboarding/bindings/onboarding_binding.dart';
 import 'package:haiternak_mobile/app/modules/onboarding/views/onboarding_view.dart';
+import 'package:haiternak_mobile/app/modules/profile/views/profile.dart';
+import 'package:haiternak_mobile/app/modules/register/bindings/register_binding.dart';
+import 'package:haiternak_mobile/app/modules/register/views/register_view2.dart';
 import 'package:haiternak_mobile/app/modules/splash/bindings/splash_binding.dart';
 import 'package:haiternak_mobile/app/modules/splash/views/splash_view.dart';
 import 'package:haiternak_mobile/app/modules/upload/bindings/upload_binding.dart';
@@ -42,8 +45,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => LoginView(),
+      page: () => LoginView2(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => RegisterView2(),
+      binding: RegisterBinding(),
     ),
     GetPage(
       name: _Paths.BOTTOM_NAV_BAR,
@@ -65,5 +73,9 @@ class AppPages {
       page: () => MarketView(),
       binding: MarketBinding(),
     ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => Profile(),
+    )
   ];
 }

@@ -15,10 +15,13 @@ class UploadController extends GetxController {
 
   final title = ''.obs;
 
+  final isLoading = false.obs;
+
   List<DiseaseModel> listDisease = [];
 
   void changeExpan() => isExpan.value = !isExpan.value;
 
+  void onLoading() => isLoading.value = !isLoading.value;
   @override
   void onInit() {
     loadModel();

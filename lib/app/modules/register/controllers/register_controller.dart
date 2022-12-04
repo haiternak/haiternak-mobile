@@ -1,15 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:haiternak_mobile/app/routes/app_pages.dart';
+
+import '../../../routes/app_pages.dart';
 
 class RegisterController extends GetxController {
   final currentIndex = 0.obs;
+  final _auth = FirebaseAuth.instance;
 
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController namaLengkapController;
   late TextEditingController usernameController;
+  String? email;
+  String? password;
+  String? notif;
+  bool? isError;
 
   PageController pageController = PageController();
 
@@ -17,8 +25,6 @@ class RegisterController extends GetxController {
     this.currentIndex.value = currentIndex;
   }
 
-  var email = '';
-  var password = '';
   var namaLengkap = '';
   var username = '';
 
@@ -30,7 +36,6 @@ class RegisterController extends GetxController {
     namaLengkapController = TextEditingController();
     usernameController = TextEditingController();
   }
-
 
   @override
   void onClose() {
@@ -68,13 +73,39 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  void checkRegister() {
+  // void checkRegister() {
+  //   final isValid = registerFormKey.currentState!.validate();
+  //   if (!isValid) {
+  //     return;
+  //   } else {
+  //     Get.offAllNamed(Routes.LOGIN);
+  //   }
+  //   registerFormKey.currentState!.save();
+  // }
+
+  Future<void> checkRegister() async {
+    isError = false;
+    // final isValid = loginFormKey.currentState!.validate();
+    // if (!isValid) {
+    //   return;
+    // } else {
+    //   Get.offAllNamed(Routes.HOME);
+    // }
+    // loginFormKey.currentState!.save();
+
+    // final progrss = ProgressHUD.of(context);
+    // progrss?.showWithText('Loading');
     final isValid = registerFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    } else {
-      Get.offAllNamed(Routes.LOGIN);
-    }
     registerFormKey.currentState!.save();
+    try {
+      final newUser = await _auth.createUserWithEmailAndPassword(
+          email: email!, password: password!);
+      Get.offAllNamed(Routes.HOME);
+    } catch (e) {
+      // progrss?.dismiss();
+      isError = true;
+      notif = e.toString();
+      print(e);
+    }
   }
 }

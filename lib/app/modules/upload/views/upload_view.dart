@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/upload/views/result_view.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 import 'package:haiternak_mobile/constants/constants.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../utils/utils.dart';
 import '../controllers/upload_controller.dart';
 
 class UploadView extends GetView<UploadController> {
@@ -109,25 +109,39 @@ class UploadView extends GetView<UploadController> {
                   child: controller.isPick.value ? OutputImage() : InputImage(),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: getProperHeight(getProperWidht(56)),
-                child: ElevatedButton(
-                  onPressed: () async {
-                    await controller.imageClassification();
-                    Get.to(ResultView());
-                  },
-                  child: Text(
-                    'Upload Gambar',
-                    style: whiteTextStyle.copyWith(
-                      fontWeight: bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+              Obx(
+                () => Container(
+                  width: double.infinity,
+                  height: getProperHeight(getProperWidht(56)),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      controller.onLoading();
+                      DialogsLottie().dialoglottie;
+                      await controller.imageClassification();
+                      Future.delayed(Duration(seconds: 3), () {
+                        Navigator.of(context).pop();
+                        controller.onLoading();
+                        Get.to(ResultView());
+                      });
+                    },
+                    child: !controller.isLoading.value
+                        ? Text(
+                            'Upload Gambar',
+                            style: whiteTextStyle.copyWith(
+                              fontWeight: bold,
+                              fontSize: 18,
+                            ),
+                          )
+                        : Center(
+                            child: CircularProgressIndicator(
+                              color: kBackgroundColor1,
+                            ),
+                          ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: kPrimaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
                 ),

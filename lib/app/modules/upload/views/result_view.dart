@@ -47,8 +47,47 @@ class ResultView extends GetView<UploadController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               controller.title.value == 'Healthy'
-                  ? SvgPicture.asset(
-                      'assets/images/success-state.svg',
+                  ? Column(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/success-state.svg',
+                        ),
+                        SizedBox(
+                          height: getProperWidht(11),
+                        ),
+                        Center(
+                          child: Text(
+                            'Kelihatannya Ayam Kamu Terindikasi Sehat ',
+                            textAlign: TextAlign.center,
+                            style: primaryTextStyle.copyWith(
+                              fontWeight: bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: getProperHeight(getProperWidht(56)),
+                          margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text(
+                              'Analisis Gambar Lain',
+                              style: whiteTextStyle.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: kSecondaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     )
                   : ResultContent(),
               Column(
@@ -105,7 +144,7 @@ class ResultContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Prediksi Penyakit',
+          'Hasil Analisis Gambar',
           style: primaryTextStyle.copyWith(fontWeight: bold, fontSize: 18),
         ),
         SizedBox(
@@ -117,6 +156,46 @@ class ResultContent extends StatelessWidget {
         ),
         SizedBox(
           height: getProperWidht(14),
+        ),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(
+            getProperWidht(12),
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: kSecondaryColor,
+            ),
+          ),
+          child: Center(
+            child: Container(
+              width: getProperWidht(300),
+              height: getProperHeight(160.0),
+              padding: EdgeInsets.all(
+                getProperWidht(52),
+              ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: FileImage(controller.image.value),
+                    fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: kSecondaryColor,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: getProperWidht(14),
+        ),
+        Text(
+          'Prediksi Penyakit',
+          style: primaryTextStyle.copyWith(fontWeight: bold, fontSize: 18),
+        ),
+        SizedBox(
+          height: getProperWidht(5),
         ),
         Column(
           children: controller.listDisease
@@ -137,6 +216,7 @@ class DiseaseCard extends StatelessWidget {
     Key? key,
     required this.diseaseModel,
   }) : super(key: key);
+
   final DiseaseModel diseaseModel;
   @override
   Widget build(BuildContext context) {
@@ -202,7 +282,7 @@ class DiseaseCard extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/virus-icon.svg',
-                  color: Colors.red,
+                  color: diseaseModel.color,
                 ),
               ),
               SizedBox(
