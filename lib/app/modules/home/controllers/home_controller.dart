@@ -18,16 +18,16 @@ class HomeController extends GetxController {
       'title': 'Deteksi Dini Bahaya di Peternakanmu',
     },
     {
-      'image': 'assets/images/chicken.png',
+      'image': 'assets/images/ciken_bisnis.png',
       'subtitle':
-          'Scan feses ayam kamu disini sebagai tindakan preventif bahaya di peternakanmu.',
-      'title': 'Deteksi Dini Bahaya di Peternakanmu',
+          'HaiTernak menyediakan marketplace untuk memenuhi kebutuhan ternakmu.',
+      'title': 'Pakan Berkualitas di HaiPakan',
     },
     {
-      'image': 'assets/images/chicken.png',
+      'image': 'assets/images/ciken_info.png',
       'subtitle':
-          'Scan feses ayam kamu disini sebagai tindakan preventif bahaya di peternakanmu.',
-      'title': 'Deteksi Dini Bahaya di Peternakanmu',
+          'Kamu dapat menghubungi Ahli Peternakan dari hasil analisa AI dengan HaiExpert.',
+      'title': 'Akurat Lebih Bermanfaat.',
     },
   ];
 }

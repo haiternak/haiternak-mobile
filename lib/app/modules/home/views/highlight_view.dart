@@ -21,7 +21,7 @@ class HighlightView extends GetView<HomeController> {
           child: Column(
             children: [
               Text(
-                'Bercak putih (White Spot) ini muncul karena adanya proses penghilangan kadar garam dan mineral (demineralisasi) pada jaringan keras gigi akibat plak dan sisa makanan yang menumpuk. Jika dibiarkan terus menerus, bercak putih akan berubah menjadi bercak kecoklatan yang menyebar dan membentuk lubang pada gigi.',
+                'Vaksinasi merupakan salah satu kunci untuk mencegah penyakit yang berpotensi menyerang unggas, misalnya Flu Burung (Avian Influenza). Vaksinasi penting dilakukan, apalagi di saat ini tantangan virus semakin tinggi, semakin mudah bermutasi dan menular.',
                 style: primaryTextStyle.copyWith(
                   fontSize: 14,
                 ),

@@ -39,7 +39,7 @@ class MarketView extends GetView<MarketController> {
                           width: 300.0,
                           child: Center(
                             child: Text(
-                              'E-Pakan',
+                              'Hai-Market',
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
@@ -63,6 +63,69 @@ class MarketView extends GetView<MarketController> {
                   ),
                 ],
               ),
+
+              CustomMarket(
+                feed:
+                    'Kualitas Merupakan Prioritas Utama Kami\ndengan menggunakan teknologi\npembibitan berbasis penelitian',
+                img: 'assets/images/docci.jpg',
+              ),
+              SizedBox(
+                height: getProperWidht(18),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 18),
+                child: Text(
+                  'DOC PREMIUM',
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 18,
+                      color: kPrimaryTextColor,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10.0),
+                child: Text(
+                  'Memilih penjual bibit ayam yang baik juga sangat penting dalam pemilihan DOC ayam Broiler maupun petelur. Perawatan ayam indukan akan mempengaruhi kualitas DOC yang anda beli dan produk yang akan dihasilkannya',
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 12, color: kSecondaryColor),
+                ),
+              ),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Learn More',
+                        style: primaryTextStyle.copyWith(
+                            fontSize: 16,
+                            color: kPrimaryColor,
+                            fontWeight: semiBold),
+                      ),
+                      SizedBox(
+                        width: 4.0,
+                      ),
+                      Icon(
+                        Icons.arrow_circle_right_outlined,
+                        color: kPrimaryColor,
+                        size: 16.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: getProperWidht(18),
+              ),
+              GestureDetector(
+                onTap: () => Get.to(MarketDetail()),
+                child: CarouselScroll2(),
+              ),
+              SizedBox(
+                height: getProperWidht(18),
+              ),
+
               CustomMarket(
                 feed:
                     'Temukan Kebutuhan Ternak\ndengan mudah, efisien dan\nterjangkau',
@@ -268,6 +331,52 @@ class CarouselScroll extends StatelessWidget {
             autoPlay: true,
           ),
           items: controller.korosal.map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return CardCaraouselMarket(
+                  img: i['image'],
+                );
+              },
+            );
+          }).toList(),
+        ),
+        SizedBox(
+          height: getProperWidht(14),
+        ),
+        Obx(
+          () => DotsIndicator(
+            dotsCount: 3,
+            position: controller.currentIndex.value.toDouble(),
+            decorator: DotsDecorator(
+              activeColor: kPrimaryColor,
+              size: const Size.square(9.0),
+              activeSize: const Size(18.0, 9.0),
+              activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CarouselScroll2 extends StatelessWidget {
+  const CarouselScroll2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    MarketController controller = Get.find();
+    return Column(
+      children: [
+        CarouselSlider(
+          carouselController: controller.buttonCarouselController,
+          options: CarouselOptions(
+            height: getProperWidht(160),
+            onPageChanged: (index, reason) => controller.changePage(index),
+            autoPlay: true,
+          ),
+          items: controller.dockorosal.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return CardCaraouselMarket(

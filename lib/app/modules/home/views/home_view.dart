@@ -108,6 +108,7 @@ class RekomendationCard extends StatelessWidget {
       onTap: () {
         Dialogs().dialogEmpty;
       },
+
       child: Container(
         margin: EdgeInsets.only(right: getProperWidht(14)),
         child: Container(

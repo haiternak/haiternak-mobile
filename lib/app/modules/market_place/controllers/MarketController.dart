@@ -21,6 +21,39 @@ class MarketController extends GetxController {
       'image': 'assets/images/item-market3.png',
     },
   ];
+
+  List<Map<String, dynamic>> dockorosal = [
+    {
+      'image': 'assets/images/doc-1.png',
+    },
+    {
+      'image': 'assets/images/doc-2.png',
+    },
+    {
+      'image': 'assets/images/doc-3.png',
+    },
+  ];
+
+  List<Map<String, dynamic>> corousaldetail = [
+    {
+      'image': 'assets/images/doc-1.png',
+    },
+    {
+      'image': 'assets/images/item-market1.png',
+    },
+    {
+      'image': 'assets/images/doc-2.png',
+    },
+    {
+      'image': 'assets/images/item-market2.png',
+    },
+    {
+      'image': 'assets/images/doc-3.png',
+    },
+    {
+      'image': 'assets/images/item-market3.png',
+    }
+  ];
 }
 
 // class HomeController extends GetxController {

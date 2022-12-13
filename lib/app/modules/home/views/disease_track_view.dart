@@ -74,6 +74,17 @@ class DiseaseTrackView extends GetView<HomeController> {
                                   fontWeight: medium,
                                 ),
                               ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Sulawesi Selatan',
+                                    style: subtitleTextStyle.copyWith(
+                                      fontSize: 10,
+                                      fontWeight: medium,
+                                    ),
+                                  ),
+                                ],
+                              ),
                               Text(
                                 'Terakhir Diperbarui 17.35, 27 Sep 2022',
                                 style: subtitleTextStyle.copyWith(
@@ -81,18 +92,6 @@ class DiseaseTrackView extends GetView<HomeController> {
                                 ),
                               ),
                             ],
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: kPrimaryColor,
-                          ),
-                          Text(
-                            'Sulawesi Selatan',
-                            style: subtitleTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: medium,
-                            ),
                           ),
                         ],
                       ),
@@ -118,6 +117,7 @@ class DiseaseTrackView extends GetView<HomeController> {
                             children: [
                               DropdownButton<String>(
                                 value: selectedCurrency,
+                                underline: SizedBox(),
                                 items: [
                                   DropdownMenuItem(
                                       value: 'Weekly', child: Text('Weekly')),

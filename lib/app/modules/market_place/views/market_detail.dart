@@ -7,11 +7,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import 'package:haiternak_mobile/app/modules/market_place/components/card_caraousel_market.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants/constants.dart';
 import '../controllers/MarketController.dart';
 
 class MarketDetail extends GetView<MarketController> {
+  final Uri _url = Uri.parse(
+      'https://www.tokopedia.com/anugrahkepiting/doc-ayam-petelor?extParam=whid%3D7106370');
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $_url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     MarketController controller = Get.put(MarketController());
@@ -94,7 +104,7 @@ class MarketDetail extends GetView<MarketController> {
                   height: getProperHeight(getProperWidht(56)),
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(null);
+                      _launchUrl();
                     },
                     child: Expanded(
                       child: Row(
@@ -148,7 +158,7 @@ class CarouselScroll extends StatelessWidget {
             onPageChanged: (index, reason) => controller.changePage(index),
             autoPlay: true,
           ),
-          items: controller.korosal.map((i) {
+          items: controller.corousaldetail.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return CardCaraouselMarket(
@@ -163,7 +173,7 @@ class CarouselScroll extends StatelessWidget {
         ),
         Obx(
           () => DotsIndicator(
-            dotsCount: 3,
+            dotsCount: 6,
             position: controller.currentIndex.value.toDouble(),
             decorator: DotsDecorator(
               activeColor: kPrimaryColor,
