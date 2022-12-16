@@ -14,6 +14,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const CHAT = _Paths.CHAT;
   static const PROFILE = _Paths.PROFILE;
+  static const PAKAN = _Paths.PAKAN;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const CHAT = '/chat';
   static const PROFILE = '/profile';
+  static const PAKAN = '/pakan';
 }

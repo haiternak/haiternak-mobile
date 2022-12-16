@@ -19,7 +19,7 @@ class Profile extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: null,
         bottomNavigationBar: BottomNavBarView(),
-        backgroundColor: ArgonColors.bgColorScreen,
+        backgroundColor: ArgonColors.black,
         body: Stack(children: <Widget>[
           Container(
               decoration: BoxDecoration(

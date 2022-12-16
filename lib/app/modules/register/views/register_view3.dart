@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:haiternak_mobile/app/modules/register/controllers/register_controller.dart';
 import 'package:haiternak_mobile/themes/theme.dart';
+import 'package:haiternak_mobile/utils/utils.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
@@ -36,7 +37,9 @@ class RegisterView3 extends GetView<RegisterController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialFacebook,
                               child: Icon(FontAwesomeIcons.facebook,
@@ -45,7 +48,9 @@ class RegisterView3 extends GetView<RegisterController> {
                               shape: CircleBorder(),
                             ),
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialTwitter,
                               child: Icon(FontAwesomeIcons.twitter,
@@ -54,7 +59,9 @@ class RegisterView3 extends GetView<RegisterController> {
                               shape: CircleBorder(),
                             ),
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialDribbble,
                               child: Icon(FontAwesomeIcons.google,
@@ -158,9 +165,17 @@ class RegisterView3 extends GetView<RegisterController> {
                                       vertical: 16, horizontal: 16.0)),
                               onPressed: () async {
                                 // Respond to button press
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    });
                                 await controller.checkRegister();
 
                                 if (controller.isError == true) {
+                                  Navigator.of(context).pop();
                                   QuickAlert.show(
                                     context: context,
                                     type: QuickAlertType.error,

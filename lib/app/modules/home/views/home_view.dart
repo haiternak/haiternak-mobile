@@ -13,6 +13,7 @@ import 'package:haiternak_mobile/constants/constants.dart';
 import 'package:haiternak_mobile/utils/utils.dart';
 
 import '../controllers/home_controller.dart';
+import 'components/card-function.dart';
 import 'components/card_caraousel.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -46,13 +47,13 @@ class HomeView extends GetView<HomeController> {
                   padding: EdgeInsets.all(getProperWidht(18)),
                   child: Row(
                     children: [
+                      CardFunction(
+                        title: 'Pakan Paylater',
+                        imagePath: 'assets/images/rekomcard2.png',
+                      ),
                       RekomendationCard(
                         title: 'Lapak Ternak',
                         imagePath: 'assets/images/rekomcard1.png',
-                      ),
-                      RekomendationCard(
-                        title: 'Pakan Paylater',
-                        imagePath: 'assets/images/rekomcard2.png',
                       ),
                       RekomendationCard(
                           title: 'Pencatatan',
@@ -108,7 +109,6 @@ class RekomendationCard extends StatelessWidget {
       onTap: () {
         Dialogs().dialogEmpty;
       },
-
       child: Container(
         margin: EdgeInsets.only(right: getProperWidht(14)),
         child: Container(

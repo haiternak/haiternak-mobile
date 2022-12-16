@@ -6,6 +6,7 @@ import 'package:haiternak_mobile/themes/theme.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
+import '../../../../utils/utils.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView3 extends GetView<RegisterController> {
@@ -38,7 +39,9 @@ class LoginView3 extends GetView<RegisterController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialFacebook,
                               child: Icon(FontAwesomeIcons.facebook,
@@ -47,7 +50,9 @@ class LoginView3 extends GetView<RegisterController> {
                               shape: CircleBorder(),
                             ),
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialTwitter,
                               child: Icon(FontAwesomeIcons.twitter,
@@ -56,7 +61,9 @@ class LoginView3 extends GetView<RegisterController> {
                               shape: CircleBorder(),
                             ),
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Dialogawal().dialogEmpty;
+                              },
                               elevation: 4.0,
                               fillColor: MaterialColors.socialDribbble,
                               child: Icon(FontAwesomeIcons.google,
@@ -140,9 +147,17 @@ class LoginView3 extends GetView<RegisterController> {
                                       vertical: 16, horizontal: 16.0)),
                               onPressed: () async {
                                 // Respond to button press
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    });
                                 await controller.checkLogin();
 
                                 if (controller.isError == true) {
+                                  Navigator.of(context).pop();
                                   QuickAlert.show(
                                     context: context,
                                     type: QuickAlertType.error,

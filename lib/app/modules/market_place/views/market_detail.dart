@@ -13,8 +13,7 @@ import '../../../../constants/constants.dart';
 import '../controllers/MarketController.dart';
 
 class MarketDetail extends GetView<MarketController> {
-  final Uri _url = Uri.parse(
-      'https://www.tokopedia.com/anugrahkepiting/doc-ayam-petelor?extParam=whid%3D7106370');
+  final Uri _url = Uri.parse('https://www.tokopedia.com/haiternak');
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {

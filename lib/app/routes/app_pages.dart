@@ -19,6 +19,7 @@ import 'package:haiternak_mobile/app/modules/upload/views/upload_view.dart';
 
 import '../modules/market_place/bindings/market_binding.dart';
 import '../modules/market_place/views/market_view.dart';
+import '../modules/pakanpaylater/views/pakan.dart';
 
 part 'app_routes.dart';
 
@@ -76,6 +77,10 @@ class AppPages {
     GetPage(
       name: _Paths.PROFILE,
       page: () => Profile(),
+    ),
+    GetPage(
+      name: _Paths.PAKAN,
+      page: () => Pakan(),
     )
   ];
 }
