@@ -35,12 +35,12 @@ class BottomNavBarView extends GetView<BottomNavBarController> {
             ),
             label: 'Market',
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/picture-icon.svg',
-            ),
-            label: '',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: SvgPicture.asset(
+          //     'assets/icons/picture-icon.svg',
+          //   ),
+          //   label: '',
+          // ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/report-icon.svg',

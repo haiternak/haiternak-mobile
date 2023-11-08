@@ -17,13 +17,13 @@ class BottomNavBarController extends GetxController {
       case 1:
         Get.toNamed(Routes.MARKET);
         break;
+      // case 2:
+      //   Get.toNamed(Routes.UPLOAD);
+      //   break;
       case 2:
-        Get.toNamed(Routes.UPLOAD);
-        break;
-      case 3:
         Get.toNamed(Routes.CHAT);
         break;
-      case 4:
+      case 3:
         Get.toNamed(Routes.PROFILE);
         break;
       default:

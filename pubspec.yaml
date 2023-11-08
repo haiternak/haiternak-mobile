@@ -23,6 +23,7 @@ dependencies:
   firebase_core: ^2.1.1
   google_sign_in: ^5.1.1
   flutter_progress_hud: ^2.0.2
+  textfield_search: ^0.10.0
   quickalert: ^1.0.0
 
 

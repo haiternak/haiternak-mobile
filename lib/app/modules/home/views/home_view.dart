@@ -26,7 +26,9 @@ class HomeView extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(),
-              InfoCase(),
+              SizedBox(
+                height: getProperWidht(18),
+              ),
               CarouselScroll(),
               SizedBox(
                 height: getProperWidht(18),
@@ -66,12 +68,31 @@ class HomeView extends GetView<HomeController> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 18),
-                child: Text(
-                  'Highlights',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 18,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Highlights',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      'Lihat semua',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+              CardHorizontal(
+                cta: "Lihat Artikel",
+                title: 'Memahami Pentingnya Vaksinasi Pada Ternak',
+                img: 'assets/images/image.png',
+                tap: (() => Get.to(
+                      HighlightView(),
+                    )),
               ),
               CardHorizontal(
                 cta: "Lihat Artikel",

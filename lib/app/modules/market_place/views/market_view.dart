@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import 'package:haiternak_mobile/app/modules/market_place/components/card_caraousel_market.dart';
-import 'package:haiternak_mobile/app/modules/market_place/views/market_detail.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 
 import '../../../../constants/constants.dart';
@@ -39,7 +38,7 @@ class MarketView extends GetView<MarketController> {
                           width: 300.0,
                           child: Center(
                             child: Text(
-                              'E-Pakan',
+                              'Market',
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
@@ -62,127 +61,6 @@ class MarketView extends GetView<MarketController> {
                     ),
                   ),
                 ],
-              ),
-              CustomMarket(
-                feed:
-                    'Temukan Kebutuhan Ternak\ndengan mudah, efisien dan\nterjangkau',
-                img: 'assets/images/bg-market1.png',
-              ),
-              SizedBox(
-                height: getProperWidht(18),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18),
-                child: Text(
-                  'COMFEED',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 18,
-                      color: kPrimaryTextColor,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10.0),
-                child: Text(
-                  'Pemberian pakan yang tepat dan berkualitas dapat Meningkatkan potensi keunggulan pada ternak yang dipelihara dan meningkatkan hasil produksi',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 12, color: kSecondaryColor),
-                ),
-              ),
-              GestureDetector(
-                onTap: () => Get.to(MarketDetail()),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Learn More',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 16,
-                            color: kPrimaryColor,
-                            fontWeight: semiBold),
-                      ),
-                      SizedBox(
-                        width: 4.0,
-                      ),
-                      Icon(
-                        Icons.arrow_circle_right_outlined,
-                        color: kPrimaryColor,
-                        size: 16.0,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: getProperWidht(18),
-              ),
-              GestureDetector(
-                onTap: () => Get.to(MarketDetail()),
-                child: CarouselScroll(),
-              ),
-              SizedBox(
-                height: getProperWidht(18),
-              ),
-              CustomMarket(
-                  feed:
-                      'Menjaga kesehatan ternak dengan memenuhi kebutuhan bersama HaiTernak',
-                  img: 'assets/images/bg-market2.png'), // Custom market 2
-              SizedBox(
-                height: getProperWidht(18),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18),
-                child: Text(
-                  'VITAMIN',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 18,
-                      color: kPrimaryTextColor,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10.0),
-                child: Text(
-                  'Pemberian Vitamin akan mempercepat pertumbuhan dan perkembangan juga dapat menurunkan proporsi biaya pakan serta meningkatkan kualitas daging ternak',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 12, color: kSecondaryColor),
-                ),
-              ),
-              GestureDetector(
-                onTap: () => Get.to(MarketDetail()),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Learn More',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 16,
-                            color: kPrimaryColor,
-                            fontWeight: semiBold),
-                      ),
-                      SizedBox(
-                        width: 4.0,
-                      ),
-                      Icon(
-                        Icons.arrow_circle_right_outlined,
-                        color: kPrimaryColor,
-                        size: 16.0,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: getProperWidht(18),
-              ),
-              GestureDetector(
-                onTap: () => Get.to(MarketDetail()),
-                child: CarouselScroll(),
-              ),
-              SizedBox(
-                height: getProperWidht(18),
               ),
             ],
           ),

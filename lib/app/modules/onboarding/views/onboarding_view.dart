@@ -28,23 +28,23 @@ class OnboardingView extends GetView<OnboardingController> {
                     alignment: Alignment.topLeft,
                     width: getProperWidht(220),
                     image: 'onboard-1',
-                    title: 'EARLY IDENTIFICATION',
+                    title: 'IDENTIFIKASI DINI',
                     desc:
-                        'Mengindetifikasi Masalah Pada Unggas Melalui Gambar Feses',
+                        'Mengindetifikasi Masalah Pada Unggas Menggunakan Kecerdasan Buatan',
                   ),
                   PageOnboarding(
                     alignment: Alignment.topCenter,
                     width: getProperWidht(300),
                     image: 'onboard-2',
-                    title: 'CONSULTATION',
+                    title: 'KONSULTASI',
                     desc:
-                        'Layanan Konsultasi Untuk Membantu Peternak Mengatasi Masalah Ternak Yang Dihadapi',
+                        'Layanan Konsultasi Dengan Dokter hewan atau Kecerdasan Buatan',
                   ),
                   PageOnboarding(
                     alignment: Alignment.topRight,
                     width: getProperWidht(220),
                     image: 'onboard-3',
-                    title: 'E-PAKAN',
+                    title: 'MARKET',
                     desc: 'Menyediakan Kebutuhan Bagi Para Peternak',
                   ),
                 ],
