@@ -3,7 +3,7 @@ version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
 environment:
-  sdk: ">=2.18.2 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   carousel_slider: 4.1.1
@@ -28,7 +28,6 @@ dependencies:
   image_picker: 0.8.6
   lottie: ^1.4.3
   quickalert: ^1.0.0
-  url_launcher: ^6.2.1
 
 dev_dependencies:
   flutter_launcher_icons: "^0.10.0"

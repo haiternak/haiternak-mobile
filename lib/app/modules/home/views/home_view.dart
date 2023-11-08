@@ -27,8 +27,9 @@ class HomeView extends GetView<HomeController> {
             children: [
               CustomAppBar(),
               SizedBox(
-                height: getProperWidht(18),
+                height: getProperWidht(8),
               ),
+              InfoCase(),
               CarouselScroll(),
               SizedBox(
                 height: getProperWidht(18),
@@ -280,10 +281,6 @@ class InfoCase extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Sulawesi Selatan',
-                          style: primaryTextStyle,
-                        ),
-                        Text(
                           'Persebaran Penyakit',
                           style: primaryTextStyle.copyWith(
                             fontSize: 18,
@@ -316,16 +313,16 @@ class InfoCase extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '234',
+                              '15',
                               style: primaryTextStyle.copyWith(
                                 fontWeight: bold,
                                 fontSize: 18,
                               ),
                             ),
                             Text(
-                              'Kasus',
+                              'Penyakit',
                               style: subtitleTextStyle.copyWith(
-                                fontSize: 14,
+                                fontSize: 10,
                               ),
                             ),
                           ],
