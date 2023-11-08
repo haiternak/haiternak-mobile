@@ -21,9 +21,8 @@ class RegisterView2 extends GetView<RegisterController> {
         children: [
           Container(
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/latarlogin.jpg"),
-                    fit: BoxFit.cover)),
+              color: kPrimaryColor,
+            ),
           ),
           SafeArea(
             child: Form(
@@ -151,6 +150,7 @@ class RegisterView2 extends GetView<RegisterController> {
                             ),
                           ),
                           Container(
+                              padding: EdgeInsets.all(14),
                               height: MediaQuery.of(context).size.height * 0.63,
                               color: Color.fromRGBO(244, 245, 247, 1),
                               child: Padding(
@@ -162,110 +162,97 @@ class RegisterView2 extends GetView<RegisterController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 24.0, bottom: 24.0),
-                                        child: Center(
-                                          child: Text(
-                                            "Or sign up with the classic way",
-                                            style: TextStyle(
-                                                color: ArgonColors.text,
-                                                fontWeight: FontWeight.w200,
-                                                fontSize: 16),
-                                          ),
+                                      Center(
+                                        child: Text(
+                                          "atau daftar dengan email",
+                                          style: TextStyle(
+                                              color: ArgonColors.text,
+                                              fontWeight: FontWeight.w200,
+                                              fontSize: 16),
                                         ),
                                       ),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Input(
-                                              placeholder: "Name",
-                                              prefixIcon: Icon(Icons.school),
-                                              controller: controller
-                                                  .namaLengkapController,
-                                              onSaved: (value) {
-                                                controller.namaLengkap = value;
-                                              },
-                                              validator: (value) {
-                                                return controller
-                                                    .validatenamaLengkap(value);
-                                              },
-                                            ),
+                                          Input(
+                                            placeholder: "Name",
+                                            prefixIcon: Icon(Icons.school),
+                                            controller: controller
+                                                .namaLengkapController,
+                                            onSaved: (value) {
+                                              controller.namaLengkap = value;
+                                            },
+                                            validator: (value) {
+                                              return controller
+                                                  .validatenamaLengkap(value);
+                                            },
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Input(
-                                              placeholder: "Email",
-                                              prefixIcon: Icon(Icons.email),
-                                              onSaved: (value) {
-                                                controller.email = value;
-                                              },
-                                              validator: (value) {
-                                                return controller
-                                                    .validatePassword(value);
-                                              },
-                                            ),
+                                          SizedBox(height: 10),
+                                          Input(
+                                            placeholder: "Email",
+                                            prefixIcon: Icon(Icons.email),
+                                            onSaved: (value) {
+                                              controller.email = value;
+                                            },
+                                            validator: (value) {
+                                              return controller
+                                                  .validatePassword(value);
+                                            },
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Input(
-                                              placeholder: "Password",
-                                              prefixIcon: Icon(Icons.lock),
-                                              onSaved: (value) {
-                                                controller.password = value;
-                                              },
-                                              validator: (value) {
-                                                return controller
-                                                    .validatePassword(value);
-                                              },
-                                            ),
+                                          SizedBox(height: 10),
+                                          Input(
+                                            placeholder: "Password",
+                                            prefixIcon: Icon(Icons.lock),
+                                            onSaved: (value) {
+                                              controller.password = value;
+                                            },
+                                            validator: (value) {
+                                              return controller
+                                                  .validatePassword(value);
+                                            },
                                           ),
                                         ],
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 16),
-                                        child: Center(
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  ArgonColors.white,
-                                              // shape: RoundedRectangleBorder(
-                                              //   borderRadius:
-                                              //       BorderRadius.circular(4.0),
-                                              // ),
-                                              foregroundColor: kPrimaryColor,
-                                            ),
-                                            onPressed: () async {
-                                              // Respond to button press
-                                              await controller.checkRegister();
-
-                                              if (controller.isError == true) {
-                                                QuickAlert.show(
-                                                  context: context,
-                                                  type: QuickAlertType.error,
-                                                  text: controller.notif,
-                                                );
-                                              }
-                                            },
+                                      Center(
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: ArgonColors.white,
                                             // shape: RoundedRectangleBorder(
                                             //   borderRadius:
                                             //       BorderRadius.circular(4.0),
                                             // ),
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 16.0,
-                                                  right: 16.0,
-                                                  top: 12,
-                                                  bottom: 12),
-                                              child: Text(
-                                                "REGISTER",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 16.0),
-                                              ),
+                                            foregroundColor: kPrimaryColor,
+                                          ),
+                                          onPressed: () async {
+                                            // Respond to button press
+                                            await controller.checkRegister();
+
+                                            if (controller.isError == true) {
+                                              QuickAlert.show(
+                                                context: context,
+                                                type: QuickAlertType.error,
+                                                text: controller.notif,
+                                              );
+                                            }
+                                          },
+                                          // shape: RoundedRectangleBorder(
+                                          //   borderRadius:
+                                          //       BorderRadius.circular(4.0),
+                                          // ),
+                                          child: Container(
+                                            width: double.infinity,
+                                            padding: EdgeInsets.only(
+                                                left: 16.0,
+                                                right: 16.0,
+                                                top: 12,
+                                                bottom: 12),
+                                            child: Text(
+                                              "REGISTER",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 16.0),
                                             ),
                                           ),
                                         ),

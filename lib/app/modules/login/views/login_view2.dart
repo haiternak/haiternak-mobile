@@ -22,9 +22,10 @@ class LoginView2 extends GetView<LoginController> {
         children: [
           Container(
             decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/latarlogin.jpg"),
-                  fit: BoxFit.cover),
+              color: kPrimaryColor,
+              // image: DecorationImage(
+              //     image: AssetImage("assets/images/latarlogin.jpg"),
+              //     fit: BoxFit.cover),
             ),
           ),
           SafeArea(
@@ -49,162 +50,157 @@ class LoginView2 extends GetView<LoginController> {
                       child: Column(
                         children: [
                           Container(
+                            padding: const EdgeInsets.all(24),
                             height: MediaQuery.of(context).size.height * 0.63,
                             color: Color.fromRGBO(244, 245, 247, 1),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 24.0, bottom: 24.0),
-                                      child: Center(
-                                        child: Image.asset(
-                                            'assets/images/logoHaiTernak.png'),
+                            child: Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 24.0, bottom: 24.0),
+                                    child: Center(
+                                      child: Image.asset(
+                                          'assets/images/logoHaiTernak.png'),
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Input(
+                                        placeholder: "Email",
+                                        prefixIcon: Icon(
+                                          Icons.email,
+                                        ),
+                                        onSaved: (value) {
+                                          controller.email = value;
+                                        },
+                                        validator: (value) {
+                                          return controller
+                                              .validateEmail(value);
+                                        },
                                       ),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Input(
-                                            placeholder: "Email",
-                                            prefixIcon: Icon(
-                                              Icons.email,
-                                            ),
-                                            onSaved: (value) {
-                                              controller.email = value;
-                                            },
-                                            validator: (value) {
-                                              return controller
-                                                  .validateEmail(value);
-                                            },
-                                          ),
+                                      SizedBox(
+                                        height: 8.0,
+                                      ),
+                                      Input(
+                                        placeholder: "Password",
+                                        prefixIcon: Icon(
+                                          Icons.lock,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Input(
-                                            placeholder: "Password",
-                                            prefixIcon: Icon(
-                                              Icons.lock,
-                                            ),
-                                            onSaved: (value) {
-                                              controller.password = value;
-                                            },
-                                            validator: (value) {
-                                              return controller
-                                                  .validatePassword(value);
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 16),
-                                      child: Center(
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: ArgonColors.white,
-                                            // shape: RoundedRectangleBorder(
-                                            //   borderRadius:
-                                            //       BorderRadius.circular(4.0),
-                                            // ),
-                                            foregroundColor: kPrimaryColor,
-                                          ),
-                                          onPressed: () async {
-                                            await controller.checkLogin();
-
-                                            if (controller.isError == true) {
-                                              QuickAlert.show(
-                                                context: context,
-                                                type: QuickAlertType.error,
-                                                text: controller.notif,
-                                              );
-                                            }
-                                          },
+                                        onSaved: (value) {
+                                          controller.password = value;
+                                        },
+                                        validator: (value) {
+                                          return controller
+                                              .validatePassword(value);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  Center(
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: ArgonColors.white,
                                           // shape: RoundedRectangleBorder(
                                           //   borderRadius:
                                           //       BorderRadius.circular(4.0),
                                           // ),
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                              left: 16.0,
-                                              right: 16.0,
-                                              top: 12,
-                                              bottom: 12,
-                                            ),
-                                            child: Text(
-                                              "LOGIN",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 16.0,
-                                              ),
+                                          foregroundColor: kPrimaryColor,
+                                        ),
+                                        onPressed: () async {
+                                          await controller.checkLogin();
+
+                                          if (controller.isError == true) {
+                                            QuickAlert.show(
+                                              context: context,
+                                              type: QuickAlertType.error,
+                                              text: controller.notif,
+                                            );
+                                          }
+                                        },
+                                        // shape: RoundedRectangleBorder(
+                                        //   borderRadius:
+                                        //       BorderRadius.circular(4.0),
+                                        // ),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                            left: 16.0,
+                                            right: 16.0,
+                                            top: 12,
+                                            bottom: 12,
+                                          ),
+                                          child: Text(
+                                            "LOGIN",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 0, bottom: 0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text("Belum Memiliki Akun?,",
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 0, bottom: 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("Belum Memiliki Akun?,",
+                                            style: TextStyle(
+                                                color: ArgonColors.muted,
+                                                fontWeight: FontWeight.w200)),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.toNamed(Routes.REGISTER);
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            child: Text(
+                                              "Sign Up",
                                               style: TextStyle(
-                                                  color: ArgonColors.muted,
-                                                  fontWeight: FontWeight.w200)),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.toNamed(Routes.REGISTER);
-                                            },
-                                            child: Container(
-                                              margin: EdgeInsets.only(left: 5),
-                                              child: Text(
-                                                "Sign Up",
-                                                style: TextStyle(
-                                                    color: kPrimaryColor),
-                                              ),
+                                                  color: kPrimaryColor),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 0, bottom: 0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text("Atau, login sebagai ",
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 0, bottom: 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("Atau, login sebagai ",
+                                            style: TextStyle(
+                                                color: ArgonColors.muted,
+                                                fontWeight: FontWeight.w200)),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.offAllNamed(Routes.HOME);
+                                          },
+                                          child: Container(
+                                            child: Text(
+                                              "Tamu",
                                               style: TextStyle(
-                                                  color: ArgonColors.muted,
-                                                  fontWeight: FontWeight.w200)),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.offAllNamed(Routes.HOME);
-                                            },
-                                            child: Container(
-                                              child: Text(
-                                                "Tamu",
-                                                style: TextStyle(
-                                                    color: kSecondaryColor),
-                                              ),
+                                                  color: kSecondaryColor),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
