@@ -2,41 +2,40 @@ name: haiternak_mobile
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.18.2 <3.0.0'
+environment:
+  sdk: ">=2.18.2 <3.0.0"
 
-dependencies: 
+dependencies:
+  carousel_slider: 4.1.1
+  cloud_firestore: ^4.0.4
   cupertino_icons: ^1.0.2
+  delayed_display: 2.0.0
+  dots_indicator: 2.1.0
+  dropdown_button2: ^2.1.1
+  firebase_auth: ^4.1.1
+  firebase_core: ^2.1.1
+  flutter:
+    sdk: flutter
+  flutter_progress_hud: ^2.0.2
+  flutter_spinkit: ^5.1.0
+  flutter_svg: 1.1.5
+  flutter_tflite: 1.0.1
   get: 4.6.5
   google_fonts: 3.0.1
-  dots_indicator: 2.1.0
-  delayed_display: 2.0.0
-  flutter_svg: 1.1.5
-  carousel_slider: 4.1.1
-  flutter_tflite: 1.0.1
-  image_picker: 0.8.6
-  icony: 1.0.5
-  icon: 2.2.1
-  flutter_spinkit: ^5.1.0
-  firebase_auth: ^4.1.1
-  cloud_firestore: ^4.0.4
-  firebase_core: ^2.1.1
   google_sign_in: ^5.1.1
-  flutter_progress_hud: ^2.0.2
-  textfield_search: ^0.10.0
-  quickalert: ^1.0.0
-
-
-  flutter: 
-    sdk: flutter
+  icon: 2.2.1
+  icony: 1.0.5
+  image_picker: 0.8.6
   lottie: ^1.4.3
+  quickalert: ^1.0.0
+  url_launcher: ^6.2.1
 
 dev_dependencies:
   flutter_launcher_icons: "^0.10.0"
   flutter_lints: ^2.0.0
-  lints: 2.0.0
-  flutter_test: 
+  flutter_test:
     sdk: flutter
+  lints: 2.0.0
 
 flutter_icons:
   android: "launcher_icon"
@@ -44,12 +43,11 @@ flutter_icons:
   image_path: "assets/images/icon.png"
   min_sdk_android: 19
 
-flutter: 
-  assets: 
+flutter:
+  assets:
     - assets/images/
     - assets/icons/
     - assets/json/
     - assets/tflite/model_inception_1.tflite
     - assets/tflite/labels.txt
   uses-material-design: true
-

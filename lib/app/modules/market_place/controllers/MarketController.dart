@@ -4,6 +4,14 @@ import 'package:get/get.dart';
 class MarketController extends GetxController {
   final currentIndex = 0.obs;
 
+  final List<String> dropdownItem = [
+    'Makassar',
+    'Kab. Bulukumba',
+    'Kab. Gowa',
+    'Maros',
+  ];
+  RxString? dropdownSelectedValue = "Makassar".obs;
+
   CarouselController buttonCarouselController = CarouselController();
 
   void changePage(int currentIndex) {

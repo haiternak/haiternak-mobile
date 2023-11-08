@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:haiternak_mobile/app/modules/bottom_nav_bar/views/bottom_nav_bar_view.dart';
 import 'package:haiternak_mobile/app/modules/market_place/components/card_caraousel_market.dart';
+import 'package:haiternak_mobile/app/modules/market_place/views/market_card.dart';
 import 'package:haiternak_mobile/configs/configs.dart';
 
 import '../../../../constants/constants.dart';
@@ -59,6 +61,91 @@ class MarketView extends GetView<MarketController> {
                         ),
                       ],
                     ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 24, right: 24, top: 20),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Obx(() => (controller
+                                        .dropdownSelectedValue!.value !=
+                                    null)
+                                ? DropdownButton2(
+                                    buttonStyleData: ButtonStyleData(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            border: Border.all(
+                                              color: Colors.black38,
+                                            ))),
+                                    isExpanded: true,
+                                    hint: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.search_outlined,
+                                          size: 18,
+                                        ),
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Text(
+                                          'Tentukan Wilayah',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Theme.of(context).hintColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    value:
+                                        controller.dropdownSelectedValue!.value,
+                                    onChanged: (value) {
+                                      controller.dropdownSelectedValue!.value =
+                                          value ?? "";
+                                    },
+                                    items: controller.dropdownItem
+                                        .map((item) => DropdownMenuItem<String>(
+                                              value: item,
+                                              child: Text(
+                                                item,
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ))
+                                        .toList())
+                                : SizedBox.shrink())),
+                        SizedBox(
+                          width: 14,
+                        ),
+                        Container(
+                          height: 55,
+                          width: 55,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xff39A2DB),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.location_on_outlined,
+                              size: 28,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ListView(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(24),
+                    children: [
+                      MarketCard(),
+                      MarketCard(),
+                      MarketCard(),
+                    ],
                   ),
                 ],
               ),
